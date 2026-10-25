@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Join the Kora Baby launch list</title>
+  <meta name="description" content="Get one email when Kora Baby is ready for iPhone. Sleep, feeds, first foods and the little details, together in one place.">
+  <link rel="icon" href="../img/icon.png">
+  <style>
+    @font-face{font-family:Poppins;src:url('../fonts/Poppins_700Bold.ttf');font-weight:700;font-display:swap}
+    @font-face{font-family:Poppins;src:url('../fonts/Poppins_600SemiBold.ttf');font-weight:600;font-display:swap}
+    @font-face{font-family:Inter;src:url('../fonts/Inter_400Regular.ttf');font-weight:400;font-display:swap}
+    @font-face{font-family:Inter;src:url('../fonts/Inter_500Medium.ttf');font-weight:500;font-display:swap}
+    :root{color-scheme:light;--ink:#262626;--soft:#4f5d60;--teal:#0e6170;--line:#cbd5d5}
+    *{box-sizing:border-box}
+    body{margin:0;background:#f7f7f5;color:var(--ink);font:400 17px/1.55 Inter,system-ui,sans-serif}
+    a{color:inherit}
+    header{max-width:1320px;margin:auto;padding:25px clamp(20px,4vw,64px);display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 22px Poppins,system-ui,sans-serif;white-space:nowrap}
+    .brand img{width:42px;height:42px;border-radius:10px}
+    header nav{display:flex;gap:22px;font-size:14px}
+    main{max-width:1320px;margin:0 auto;padding:12px clamp(20px,4vw,64px) 56px}
+    .scene{min-height:650px;border-radius:32px;overflow:hidden;background:#d4e7e9 url('sea-glass-background.png') center/cover no-repeat;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.72fr);align-items:center;gap:40px;padding:clamp(28px,5vw,80px)}
+    .copy{max-width:620px}
+    .eyebrow{font:600 14px Poppins,system-ui,sans-serif;letter-spacing:.02em;margin:0 0 14px}
+    h1{font:700 clamp(42px,5.2vw,80px)/1.04 Poppins,system-ui,sans-serif;letter-spacing:-.045em;margin:0;max-width:12ch}
+    .lead{font-size:clamp(18px,1.7vw,23px);line-height:1.5;max-width:43ch;margin:28px 0 0}
+    .card{background:rgba(255,255,255,.91);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.8);border-radius:28px;padding:clamp(25px,3vw,42px);box-shadow:0 22px 60px rgba(25,42,43,.12)}
+    .card h2{font:700 clamp(25px,2.2vw,34px)/1.16 Poppins,system-ui,sans-serif;margin:0 0 9px;letter-spacing:-.03em}
+    .card p{margin:0 0 22px;color:var(--soft)}
+    label.email-label{display:block;font:600 14px Poppins,system-ui,sans-serif;margin-bottom:8px}
+    input[type=email]{width:100%;min-height:54px;padding:13px 16px;border:1.5px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font:400 17px Inter,system-ui,sans-serif}
+    input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #2389a5;outline-offset:3px}
+    .consent{display:flex;gap:10px;align-items:flex-start;margin:17px 0 22px;font-size:13px;line-height:1.5;color:var(--soft)}
+    .consent input{width:18px;height:18px;flex:none;margin:2px 0 0;accent-color:var(--teal)}
+    button{width:100%;min-height:54px;border:0;border-radius:999px;background:var(--ink);color:white;cursor:pointer;font:600 16px Poppins,system-ui,sans-serif}
+    button:hover{background:#0e6170}
+    button:disabled{opacity:.6;cursor:wait}
+    .small{font-size:12px;line-height:1.5;color:var(--soft);margin-top:16px!important;margin-bottom:0!important}
+    .status{min-height:24px;margin:14px 0 0!important;font-size:14px!important;color:var(--ink)!important}
+    .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+    .note{max-width:900px;margin:26px auto 0;text-align:center;font-size:14px;color:var(--soft)}
+    footer{max-width:1320px;margin:0 auto;padding:28px clamp(20px,4vw,64px) 50px;display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid #e0e7e7;font-size:13px;color:var(--soft)}
+    @media(max-width:850px){.scene{grid-template-columns:1fr;background-position:59% center;min-height:0;padding:36px 22px}.card{max-width:550px}.copy{max-width:550px}h1{max-width:15ch}}
+  </style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../"><img src="../img/icon.png" alt="">Kora Baby</a>
+  <nav aria-label="Page links"><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</header>
+<main>
+  <section class="scene" aria-labelledby="headline">
+    <div class="copy">
+      <p class="eyebrow">COMING TO IPHONE</p>
+      <h1 id="headline">The little things, together.</h1>
+      <p class="lead">Sleep, feeds, first foods and the notes you want to keep. One calm place for your baby’s day, shared with the people caring for them.</p>
+    </div>
+    <div class="card" id="signup-card">
+      <h2>Join the launch list</h2>
+      <p>Get an email when Kora Baby is ready. Designed and built by Mom &amp; Dad.</p>
+      <form id="signup-form">
+        <label class="email-label" for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
+        <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <label class="consent"><input id="consent" name="consent" type="checkbox" required><span>Email me about Kora Baby’s launch. I can unsubscribe at any time. Read the <a href="privacy.html">launch list privacy notice</a>.</span></label>
+        <button type="submit" id="submit">Join the list</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="small">We’ll email you a link to confirm your address. Joining the list does not reserve one of the first 100 family places; those are confirmed inside Kora.</p>
+    </div>
+  </section>
+  <p class="note">Switzerland first. Kora Baby is coming to iPhone. Android is planned later, with no date promised.</p>
+</main>
+<footer><span>© Kora Baby</span><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><a href="mailto:support@korababy.app">support@korababy.app</a></footer>
+<script>
+(() => {
+  const endpoint = 'https://mxibrkctbnfoderliiwr.supabase.co/functions/v1/launch-waitlist';
+  const form = document.getElementById('signup-form');
+  const status = document.getElementById('status');
+  const button = document.getElementById('submit');
+  const params = new URLSearchParams(location.hash.slice(1));
+  const action = params.get('action');
+  const token = params.get('token');
+  async function request(payload) {
+    const response = await fetch(endpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if (!response.ok) throw new Error('request failed');
+    return response.json();
+  }
+  if ((action === 'confirm' || action === 'unsubscribe') && token && /^[A-Za-z0-9_-]{32,128}$/.test(token)) {
+    document.querySelector('.card h2').textContent = action === 'confirm' ? 'Confirm your email' : 'Leave the launch list';
+    document.querySelector('.card > p').textContent = action === 'confirm' ? 'One tap and you’ll be on the list.' : 'You can remove your email from the list here.';
+    form.innerHTML = '';
+    const act = document.createElement('button');
+    act.type = 'button';
+    act.textContent = action === 'confirm' ? 'Confirm my email' : 'Unsubscribe';
+    const message = document.createElement('p');
+    message.className = 'status'; message.setAttribute('role','status');
+    form.append(act,message);
+    act.addEventListener('click', async () => {
+      act.disabled = true;
+      try { await request({action,token}); message.textContent = action === 'confirm' ? 'You’re on the launch list. Thank you!' : 'You’ve been removed from the launch list.'; history.replaceState(null,'',location.pathname); }
+      catch { message.textContent = 'That link could not be used. Please contact support@korababy.app.'; act.disabled = false; }
+    });
+    return;
+  }
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    button.disabled = true; status.textContent = 'Sending…';
+    try {
+      await request({action:'subscribe',email:document.getElementById('email').value,consent:document.getElementById('consent').checked,website:document.getElementById('website').value,locale:'en'});
+      status.textContent = 'Check your inbox for a confirmation link. If you already joined, there’s nothing else to do.';
+      form.reset();
+    } catch {
+      status.textContent = 'We couldn’t add you just now. Please try again later.';
+    } finally { button.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
