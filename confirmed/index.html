@@ -1,0 +1,102 @@
+<!doctype html>
+<!-- Kora Baby — the page a sign-up confirmation email lands on (launch 13.33 follow-up, Porta, 2026-10-27).
+     Why: Petru tapped Confirm on his Mac and Chrome showed a blank page — the email sent him to the app's own address
+     (korababy://), and a computer has no app. The address WAS confirmed; nothing said so.
+     What it does: says the address is confirmed, and on an iPhone or iPad offers to open Kora Baby. It signs nobody in —
+     the phone signs in with the password, as before. Supabase puts the sign-in tokens after the # of this address; the
+     script REMOVES them from the address bar and history at once and never reads, stores or sends them. A link that no
+     longer works (#error=…) says so. No cookie, no storage, nothing loaded from another site, not indexed.
+     Live only after his two moves: publish this page, and add https://korababy.app/confirmed/ to Supabase's Redirect URLs;
+     then `AuthLink.usesSignUpLanding` = true. de/it/fr: Iris writes them (du, tu, tu); an absent key reads the English. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>Kora Baby — Email confirmed</title>
+  <link rel="icon" href="../img/icon.png">
+  <style>
+    @font-face{font-family:Poppins;src:url('../fonts/Poppins_700Bold.ttf');font-weight:700;font-display:swap}
+    @font-face{font-family:Inter;src:url('../fonts/Inter_400Regular.ttf');font-weight:400;font-display:swap}
+    :root{color-scheme:light dark;--ink:#262626;--soft:#4f5d60;--page:#f7f7f5;--card:#fff}
+    @media (prefers-color-scheme:dark){:root{--ink:#f2f2f2;--soft:#a9b3b5;--page:#000;--card:#1c1c1e}}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--page);color:var(--ink);font:400 17px/1.55 Inter,system-ui,sans-serif;padding:24px 16px}
+    main{width:100%;max-width:460px;background:var(--card);border-radius:28px;padding:36px 28px;text-align:center;box-shadow:0 22px 60px rgba(25,42,43,.12)}
+    img{width:64px;height:64px;border-radius:16px}
+    h1{font:700 26px/1.2 Poppins,system-ui,sans-serif;margin:20px 0 10px;letter-spacing:-.02em}
+    p{margin:0;color:var(--soft)}
+    a.open{display:none;margin-top:26px;min-height:52px;line-height:52px;border-radius:999px;background:var(--ink);color:var(--page);text-decoration:none;font:700 16px Poppins,system-ui,sans-serif}
+    .phone a.open{display:block}
+  </style>
+</head>
+<body>
+<main>
+  <img src="../img/icon.png" alt="Kora Baby">
+  <h1 id="title">Your email is confirmed</h1>
+  <p id="lead">Go back to Kora Baby on your iPhone and sign in. Everything you entered is waiting there.</p>
+  <a class="open" id="open" href="korababy://">Open Kora Baby</a>
+</main>
+<script>
+(function () {
+  // de/it/fr: Iris, 2026-10-27 — informal (du, tu, tu); Juno reads de, fr and it.
+  var WORDS = {
+    en: {},
+    de: {
+      title: 'Deine E-Mail-Adresse ist bestätigt',
+      lead: 'Geh zurück zu Kora Baby auf deinem iPhone und melde dich an. Alles, was du eingegeben hast, wartet dort auf dich.',
+      failedTitle: 'Dieser Link funktioniert nicht mehr',
+      failedLead: 'Vielleicht wurde er schon benutzt oder ist zu alt. Öffne Kora Baby auf deinem iPhone und melde dich an – dort siehst du, wie es weitergeht.',
+      open: 'Kora Baby öffnen',
+      pageTitle: 'Kora Baby – E-Mail bestätigt'
+    },
+    it: {
+      title: 'La tua email è confermata',
+      lead: 'Torna su Kora Baby sul tuo iPhone e accedi. Tutto quello che hai inserito ti aspetta lì.',
+      failedTitle: 'Questo link non funziona più',
+      failedLead: 'Forse è già stato usato o è scaduto. Apri Kora Baby sul tuo iPhone e accedi: ti dirà cosa fare.',
+      open: 'Apri Kora Baby',
+      pageTitle: 'Kora Baby — Email confermata'
+    },
+    fr: {
+      title: 'Ton adresse e-mail est confirmée',
+      lead: 'Retourne dans Kora Baby sur ton iPhone et connecte-toi. Tout ce que tu as saisi t’y attend.',
+      failedTitle: 'Ce lien ne fonctionne plus',
+      failedLead: 'Il a peut-être déjà été utilisé ou il est trop ancien. Ouvre Kora Baby sur ton iPhone et connecte-toi\u00a0: l’app te dira quoi faire.',
+      open: 'Ouvrir Kora Baby',
+      pageTitle: 'Kora Baby — E-mail confirmé'
+    }
+  };
+  var EN = {
+    title: 'Your email is confirmed',
+    lead: 'Go back to Kora Baby on your iPhone and sign in. Everything you entered is waiting there.',
+    failedTitle: 'This link no longer works',
+    failedLead: 'It may have been used already or be too old. Open Kora Baby on your iPhone and sign in — it tells you what to do next.',
+    open: 'Open Kora Baby',
+    pageTitle: 'Kora Baby — Email confirmed'
+  };
+  // The tokens after the # are never kept: read whether it is an error, then wipe the address.
+  var hash = location.hash || '';
+  var failed = /(^|[#&])error(_code)?=/.test(hash);
+  if (hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+  var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']);
+  var lang = 'en';
+  for (var i = 0; i < langs.length; i++) {
+    var l = String(langs[i]).slice(0, 2).toLowerCase();
+    if (WORDS[l]) { lang = l; break; }
+  }
+  var w = WORDS[lang];
+  function say(k) { return w[k] || EN[k]; }
+  document.documentElement.lang = lang;
+  document.title = say('pageTitle');
+  document.getElementById('title').textContent = say(failed ? 'failedTitle' : 'title');
+  document.getElementById('lead').textContent = say(failed ? 'failedLead' : 'lead');
+  document.getElementById('open').textContent = say('open');
+  var ua = navigator.userAgent || '';
+  var phone = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (phone) document.body.className = 'phone';
+})();
+</script>
+</body>
+</html>
