@@ -15,14 +15,89 @@
   </style>
 </head>
 <body><main>
-  <a href="index.html">← Back to the launch list</a>
-  <h1>Launch list privacy</h1>
-  <p>Marysol Longo operates Kora Baby. You can contact us at <a href="mailto:support@korababy.app">support@korababy.app</a> or Marysol Longo, Postfach, 8600 Dübendorf 1, Switzerland.</p>
-  <h2>What we collect</h2>
-  <p>If you join the launch list, we collect your email address and whether you confirmed it. We use it only to send the confirmation email and news directly related to Kora Baby’s launch. A launch-list signup does not create a Kora Baby account or reserve a first-100 family place. We do not ask for details about your baby.</p>
-  <h2>Who handles it</h2>
-  <p>We store the list in Kora Baby’s Supabase project. Resend sends the confirmation and launch emails for us and receives the address and email content needed to deliver them. The website itself is hosted on GitHub Pages, which processes technical request data to deliver the page. We do not add advertising pixels or cross-site tracking to this signup page.</p>
-  <h2>Leaving the list</h2>
-  <p>Every launch-list email will include an unsubscribe link. You can also ask us to remove your address at <a href="mailto:support@korababy.app">support@korababy.app</a>. We will close and remove the launch list after the launch campaign; unconfirmed addresses will be removed sooner. You may ask what we hold about you or request correction or deletion through the same address.</p>
-  <p>For the app’s separate privacy policy, see <a href="../privacy.html">Kora Baby privacy</a>.</p>
-</main></body></html>
+  <a data-w="back" id="back" href="index.html">← Back to the launch list</a>
+  <h1 data-w="h1">Launch list privacy</h1>
+  <p data-h="who">Marysol Longo operates Kora Baby. You can contact us at <a href="mailto:support@korababy.app">support@korababy.app</a> or Marysol Longo, Postfach, 8600 Dübendorf 1, Switzerland.</p>
+  <h2 data-w="collectTitle">What we collect</h2>
+  <p data-w="collect">If you join the launch list, we collect your email address and whether you confirmed it. We use it only to send the confirmation email and news directly related to Kora Baby’s launch. A launch-list signup does not create a Kora Baby account or reserve a first-100 family place. We do not ask for details about your baby.</p>
+  <h2 data-w="handlesTitle">Who handles it</h2>
+  <p data-w="handles">We store the list in Kora Baby’s Supabase project. Resend sends the confirmation and launch emails for us and receives the address and email content needed to deliver them. The website itself is hosted on GitHub Pages, which processes technical request data to deliver the page. We do not add advertising pixels or cross-site tracking to this signup page.</p>
+  <h2 data-w="leaveTitle">Leaving the list</h2>
+  <p data-h="leave">Every launch-list email will include an unsubscribe link. You can also ask us to remove your address at <a href="mailto:support@korababy.app">support@korababy.app</a>. We will close and remove the launch list after the launch campaign; unconfirmed addresses will be removed sooner. You may ask what we hold about you or request correction or deletion through the same address.</p>
+  <p data-h="app">For the app’s separate privacy policy, see <a id="app-privacy" href="../privacy.html">Kora Baby privacy</a>.</p>
+</main>
+<script>
+// LAUNCH 15.42 (Iris, 2026-10-31): the launch list's notice in the parent's language — `?lang=` (the sign-up page passes
+// its own), else the browser's first of en/de/it/fr. Words only: what the notice says is the English, unchanged.
+// MAIL and APP stand for the two links, put back by the script. ⏪ One move back: this file at its parent commit.
+const WORDS = {
+  de: {
+    pageTitle: 'Datenschutz der Warteliste · Kora Baby',
+    back: '← Zurück zur Warteliste',
+    h1: 'Datenschutz der Warteliste',
+    who: 'Marysol Longo betreibt Kora Baby. Du erreichst uns unter MAIL oder bei Marysol Longo, Postfach, 8600 Dübendorf 1, Schweiz.',
+    collectTitle: 'Was wir erheben',
+    collect: 'Wenn du dich in die Warteliste einträgst, erheben wir deine E-Mail-Adresse und ob du sie bestätigt hast. Wir nutzen sie nur, um die Bestätigungs-E-Mail und Neuigkeiten direkt zum Start von Kora Baby zu senden. Ein Eintrag in die Warteliste erstellt kein Kora-Baby-Konto und reserviert keinen der ersten 100 Familienplätze. Wir fragen nicht nach Angaben zu deinem Baby.',
+    handlesTitle: 'Wer sie verarbeitet',
+    handles: 'Wir speichern die Liste im Supabase-Projekt von Kora Baby. Resend versendet für uns die Bestätigungs- und Start-E-Mails und erhält dafür die Adresse und den Inhalt der E-Mail, die zur Zustellung nötig sind. Die Website selbst wird auf GitHub Pages gehostet, das technische Anfragedaten verarbeitet, um die Seite auszuliefern. Wir fügen dieser Anmeldeseite keine Werbepixel und kein websiteübergreifendes Tracking hinzu.',
+    leaveTitle: 'Die Liste verlassen',
+    leave: 'Jede E-Mail der Warteliste enthält einen Link zum Abmelden. Du kannst uns auch unter MAIL bitten, deine Adresse zu entfernen. Wir schliessen und löschen die Warteliste nach der Startkampagne; unbestätigte Adressen werden früher entfernt. Unter derselben Adresse kannst du fragen, was wir über dich speichern, oder eine Berichtigung oder Löschung verlangen.',
+    app: 'Die separate Datenschutzerklärung der App findest du unter APP.',
+    appLink: 'Datenschutz bei Kora Baby'
+  },
+  it: {
+    pageTitle: 'Privacy della lista d’attesa · Kora Baby',
+    back: '← Torna alla lista d’attesa',
+    h1: 'Privacy della lista d’attesa',
+    who: 'Marysol Longo gestisce Kora Baby. Puoi contattarci a MAIL o presso Marysol Longo, Postfach, 8600 Dübendorf 1, Svizzera.',
+    collectTitle: 'Cosa raccogliamo',
+    collect: 'Se entri nella lista d’attesa, raccogliamo il tuo indirizzo email e se lo hai confermato. Lo usiamo solo per inviarti l’email di conferma e notizie legate direttamente al lancio di Kora Baby. L’iscrizione alla lista d’attesa non crea un account Kora Baby e non riserva uno dei primi 100 posti per le famiglie. Non chiediamo informazioni sul tuo bebè.',
+    handlesTitle: 'Chi li tratta',
+    handles: 'Conserviamo la lista nel progetto Supabase di Kora Baby. Resend invia per noi le email di conferma e di lancio e riceve l’indirizzo e il contenuto necessari per consegnarle. Il sito è ospitato su GitHub Pages, che tratta dati tecnici delle richieste per mostrare la pagina. Non aggiungiamo pixel pubblicitari né tracciamento tra siti a questa pagina di iscrizione.',
+    leaveTitle: 'Lasciare la lista',
+    leave: 'Ogni email della lista d’attesa conterrà un link per disiscriverti. Puoi anche chiederci di togliere il tuo indirizzo scrivendo a MAIL. Chiuderemo e cancelleremo la lista d’attesa dopo la campagna di lancio; gli indirizzi non confermati saranno tolti prima. Allo stesso indirizzo puoi chiedere cosa conserviamo su di te, o chiederne la correzione o la cancellazione.',
+    app: 'Per l’informativa privacy separata dell’app, vedi APP.',
+    appLink: 'Privacy di Kora Baby'
+  },
+  fr: {
+    pageTitle: 'Confidentialité de la liste d’attente · Kora Baby',
+    back: '← Retour à la liste d’attente',
+    h1: 'Confidentialité de la liste d’attente',
+    who: 'Marysol Longo exploite Kora Baby. Tu peux nous contacter à MAIL ou chez Marysol Longo, Postfach, 8600 Dübendorf 1, Suisse.',
+    collectTitle: 'Ce que nous collectons',
+    collect: 'Si tu rejoins la liste d’attente, nous collectons ton adresse e-mail et le fait que tu l’as confirmée ou non. Nous l’utilisons uniquement pour envoyer l’e-mail de confirmation et des nouvelles directement liées au lancement de Kora Baby. Une inscription à la liste d’attente ne crée pas de compte Kora Baby et ne réserve pas l’une des 100 premières places de famille. Nous ne demandons aucune information sur ton bébé.',
+    handlesTitle: 'Qui la traite',
+    handles: 'Nous conservons la liste dans le projet Supabase de Kora Baby. Resend envoie pour nous les e-mails de confirmation et de lancement et reçoit l’adresse et le contenu nécessaires pour les distribuer. Le site lui-même est hébergé sur GitHub Pages, qui traite des données techniques de requête pour afficher la page. Nous n’ajoutons ni pixels publicitaires ni suivi intersites à cette page d’inscription.',
+    leaveTitle: 'Quitter la liste',
+    leave: 'Chaque e-mail de la liste d’attente contiendra un lien de désinscription. Tu peux aussi nous demander de retirer ton adresse à MAIL. Nous fermerons et supprimerons la liste d’attente après la campagne de lancement ; les adresses non confirmées seront supprimées plus tôt. À la même adresse, tu peux demander ce que nous conservons sur toi, ou en demander la correction ou la suppression.',
+    app: 'Pour la politique de confidentialité distincte de l’app, consulte APP.',
+    appLink: 'Confidentialité de Kora Baby'
+  }
+};
+(() => {
+  const asked = String(new URLSearchParams(location.search).get('lang') || '').toLowerCase();
+  let lang = WORDS[asked] || asked === 'en' ? asked : '';
+  if (!lang) {
+    const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (const l of langs) { const two = String(l).slice(0, 2).toLowerCase(); if (two === 'en' || WORDS[two]) { lang = two; break; } }
+  }
+  const W = WORDS[lang];
+  if (!W) return;
+  document.documentElement.lang = lang;
+  document.title = W.pageTitle;
+  document.getElementById('back').href = 'index.html?lang=' + lang;
+  for (const node of document.querySelectorAll('[data-w]')) node.textContent = W[node.getAttribute('data-w')];
+  // A sentence with a link: its text goes in as text, then the link is put back where MAIL / APP stood.
+  const link = (href, text) => { const a = document.createElement('a'); a.href = href; a.textContent = text; return a; };
+  for (const node of document.querySelectorAll('[data-h]')) {
+    const words = W[node.getAttribute('data-h')];
+    node.textContent = '';
+    for (const piece of words.split(/(MAIL|APP)/)) {
+      if (piece === 'MAIL') node.append(link('mailto:support@korababy.app', 'support@korababy.app'));
+      else if (piece === 'APP') node.append(link('../' + lang + '/privacy.html', W.appLink));
+      else node.append(piece);
+    }
+  }
+})();
+</script>
+</body></html>

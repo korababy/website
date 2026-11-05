@@ -21,7 +21,7 @@
     .brand img{width:42px;height:42px;border-radius:10px}
     header nav{display:flex;gap:22px;font-size:14px}
     main{max-width:1320px;margin:0 auto;padding:12px clamp(20px,4vw,64px) 56px}
-    .scene{min-height:650px;border-radius:32px;overflow:hidden;background:#d4e7e9 url('sea-glass-background.png') center/cover no-repeat;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.72fr);align-items:center;gap:40px;padding:clamp(28px,5vw,80px)}
+    .scene{min-height:650px;border-radius:32px;overflow:hidden;background:#d4e7e9 url('sea-glass-background.jpg') center/cover no-repeat;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.72fr);align-items:center;gap:40px;padding:clamp(28px,5vw,80px)}
     .copy{max-width:620px}
     .eyebrow{font:600 14px Poppins,system-ui,sans-serif;letter-spacing:.02em;margin:0 0 14px}
     h1{font:700 clamp(42px,5.2vw,80px)/1.04 Poppins,system-ui,sans-serif;letter-spacing:-.045em;margin:0;max-width:12ch}
@@ -48,33 +48,150 @@
 <body>
 <header>
   <a class="brand" href="../"><img src="../img/icon.png" alt="">Kora Baby</a>
-  <nav aria-label="Page links"><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+  <nav aria-label="Page links"><a data-w="privacy" data-href="privacy.html" href="../privacy.html">Privacy</a><a data-w="support" data-href="support.html" href="../support.html">Support</a></nav>
 </header>
 <main>
   <section class="scene" aria-labelledby="headline">
     <div class="copy">
-      <p class="eyebrow">COMING TO IPHONE</p>
-      <h1 id="headline">The little things, together.</h1>
-      <p class="lead">Sleep, feeds, first foods and the notes you want to keep. One calm place for your baby’s day, shared with the people caring for them.</p>
+      <p class="eyebrow" data-w="eyebrow">COMING TO IPHONE</p>
+      <h1 id="headline" data-w="h1">The little things, together.</h1>
+      <p class="lead" data-w="lead">Sleep, feeds, first foods and the notes you want to keep. One calm place for your baby’s day, shared with the people caring for them.</p>
     </div>
     <div class="card" id="signup-card">
-      <h2>Join the launch list</h2>
-      <p>Get an email when Kora Baby is ready. Designed and built by Mom &amp; Dad.</p>
+      <h2 data-w="h2">Join the launch list</h2>
+      <p data-w="cardLead">Get an email when Kora Baby is ready. Designed and built by Mom &amp; Dad.</p>
       <form id="signup-form">
-        <label class="email-label" for="email">Email address</label>
+        <label class="email-label" for="email" data-w="emailLabel">Email address</label>
         <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
         <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-        <label class="consent"><input id="consent" name="consent" type="checkbox" required><span>Email me about Kora Baby’s launch. I can unsubscribe at any time. Read the <a href="privacy.html">launch list privacy notice</a>.</span></label>
-        <button type="submit" id="submit">Join the list</button>
+        <label class="consent"><input id="consent" name="consent" type="checkbox" required><span><span data-w="consentBefore">Email me about Kora Baby’s launch. I can unsubscribe at any time. Read the </span><a id="notice-link" href="privacy.html" data-w="consentLink">launch list privacy notice</a><span data-w="consentAfter">.</span></span></label>
+        <button type="submit" id="submit" data-w="button">Join the list</button>
         <p class="status" id="status" role="status" aria-live="polite"></p>
       </form>
-      <p class="small">We’ll email you a link to confirm your address. Joining the list does not reserve one of the first 100 family places; those are confirmed inside Kora Baby.</p>
+      <p class="small" data-w="small">We’ll email you a link to confirm your address. Joining the list does not reserve one of the first 100 family places; those are confirmed inside Kora Baby.</p>
     </div>
   </section>
-  <p class="note">Switzerland first. Kora Baby is coming to iPhone. Android is planned later, with no date promised.</p>
+  <p class="note" data-w="note">Switzerland first. Kora Baby is coming to iPhone. Android is planned later, with no date promised.</p>
 </main>
-<footer><span>© Kora Baby</span><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><a href="mailto:support@korababy.app">support@korababy.app</a></footer>
+<footer><span>© Kora Baby</span><a data-w="privacy" data-href="privacy.html" href="../privacy.html">Privacy</a><a data-w="support" data-href="support.html" href="../support.html">Support</a><a href="mailto:support@korababy.app">support@korababy.app</a></footer>
 <script>
+// LAUNCH 15.42 (Iris, 2026-10-31): the page in the parent's language, as r/ does — `?lang=de|it|fr` first (a
+// homepage's link), else the browser's first of en/de/it/fr, else English. The language picked is the `locale`
+// the server stores, so the launch email goes out in it (launch-email picks its template by that column).
+// ⏪ One move back: this file at its parent commit (English only, locale 'en' for everyone).
+const WORDS = {
+  en: {
+    pageTitle: 'Join the Kora Baby launch list',
+    description: 'Get one email when Kora Baby is ready for iPhone. Sleep, feeds, first foods and the little details, together in one place.',
+    privacy: 'Privacy', support: 'Support',
+    eyebrow: 'COMING TO IPHONE',
+    h1: 'The little things, together.',
+    lead: 'Sleep, feeds, first foods and the notes you want to keep. One calm place for your baby’s day, shared with the people caring for them.',
+    h2: 'Join the launch list',
+    cardLead: 'Get an email when Kora Baby is ready. Designed and built by Mom & Dad.',
+    emailLabel: 'Email address',
+    consentBefore: 'Email me about Kora Baby’s launch. I can unsubscribe at any time. Read the ',
+    consentLink: 'launch list privacy notice', consentAfter: '.',
+    button: 'Join the list',
+    small: 'We’ll email you a link to confirm your address. Joining the list does not reserve one of the first 100 family places; those are confirmed inside Kora Baby.',
+    note: 'Switzerland first. Kora Baby is coming to iPhone. Android is planned later, with no date promised.',
+    confirmTitle: 'Confirm your email', leaveTitle: 'Leave the launch list',
+    confirmLead: 'One tap and you’ll be on the list.', leaveLead: 'You can remove your email from the list here.',
+    confirmButton: 'Confirm my email', leaveButton: 'Unsubscribe',
+    confirmed: 'You’re on the launch list. Thank you!', removed: 'You’ve been removed from the launch list.',
+    linkFailed: 'That link could not be used. Please contact support@korababy.app.',
+    sending: 'Sending…',
+    checkInbox: 'Check your inbox for a confirmation link, and your spam folder if it isn’t there. If you already joined, there’s nothing else to do.',
+    couldntAdd: 'We couldn’t add you just now. Please try again later.'
+  },
+  de: {
+    pageTitle: 'Trag dich in die Warteliste von Kora Baby ein',
+    description: 'Erhalte eine E-Mail, sobald Kora Baby fürs iPhone bereit ist. Schlaf, Mahlzeiten, erste Beikost und die kleinen Details, zusammen an einem Ort.',
+    privacy: 'Datenschutz', support: 'Hilfe',
+    eyebrow: 'BALD FÜRS IPHONE',
+    h1: 'Die kleinen Dinge, gemeinsam.',
+    lead: 'Schlaf, Mahlzeiten, erste Beikost und die Notizen, die du behalten möchtest. Ein ruhiger Ort für den Tag deines Babys, geteilt mit allen, die sich um es kümmern.',
+    h2: 'Trag dich in die Warteliste ein',
+    cardLead: 'Erhalte eine E-Mail, sobald Kora Baby bereit ist. Entworfen und gebaut von Mama & Papa.',
+    emailLabel: 'E-Mail-Adresse',
+    consentBefore: 'Schick mir E-Mails zum Start von Kora Baby. Ich kann mich jederzeit abmelden. Lies den ',
+    consentLink: 'Datenschutzhinweis zur Warteliste', consentAfter: '.',
+    button: 'Eintragen',
+    small: 'Wir schicken dir einen Link, um deine Adresse zu bestätigen. Die Warteliste reserviert keinen der ersten 100 Familienplätze; diese werden in Kora Baby bestätigt.',
+    note: 'Zuerst in der Schweiz. Kora Baby kommt aufs iPhone. Android ist für später geplant, ohne versprochenes Datum.',
+    confirmTitle: 'Bestätige deine E-Mail-Adresse', leaveTitle: 'Warteliste verlassen',
+    confirmLead: 'Ein Tipp, und du stehst auf der Liste.', leaveLead: 'Hier kannst du deine E-Mail-Adresse von der Liste entfernen.',
+    confirmButton: 'E-Mail-Adresse bestätigen', leaveButton: 'Abmelden',
+    confirmed: 'Du stehst auf der Warteliste. Danke!', removed: 'Deine Adresse wurde von der Warteliste entfernt.',
+    linkFailed: 'Dieser Link konnte nicht verwendet werden. Schreib uns an support@korababy.app.',
+    sending: 'Wird gesendet …',
+    checkInbox: 'Schau in deinen Posteingang: Dort wartet ein Bestätigungslink. Falls er nicht dort ist, schau auch im Spam-Ordner nach. Wenn deine Adresse schon auf der Liste ist, musst du nichts weiter tun.',
+    couldntAdd: 'Wir konnten dich gerade nicht eintragen. Versuch es später noch einmal.'
+  },
+  it: {
+    pageTitle: 'Entra nella lista d’attesa di Kora Baby',
+    description: 'Ricevi un’email quando Kora Baby arriva su iPhone. Sonno, pasti, prime pappe e i piccoli dettagli, insieme in un unico posto.',
+    privacy: 'Privacy', support: 'Assistenza',
+    eyebrow: 'IN ARRIVO SU IPHONE',
+    h1: 'Le piccole cose, insieme.',
+    lead: 'Sonno, pasti, prime pappe e le note che vuoi conservare. Un posto tranquillo per la giornata del tuo bebè, condiviso con chi se ne prende cura.',
+    h2: 'Entra nella lista d’attesa',
+    cardLead: 'Ricevi un’email quando Kora Baby arriva. Un’app ideata e costruita da mamma e papà.',
+    emailLabel: 'Indirizzo email',
+    consentBefore: 'Inviami email sul lancio di Kora Baby. Posso disiscrivermi in qualsiasi momento. Leggi l’',
+    consentLink: 'informativa privacy della lista d’attesa', consentAfter: '.',
+    button: 'Iscrivimi',
+    small: 'Ti invieremo un link per confermare il tuo indirizzo. La lista d’attesa non riserva uno dei primi 100 posti per le famiglie; quelli si confermano dentro Kora Baby.',
+    note: 'Prima in Svizzera. Kora Baby arriva su iPhone. Android è previsto più avanti, senza una data promessa.',
+    confirmTitle: 'Conferma la tua email', leaveTitle: 'Lascia la lista d’attesa',
+    confirmLead: 'Un tocco e sei nella lista.', leaveLead: 'Qui puoi togliere la tua email dalla lista.',
+    confirmButton: 'Conferma la mia email', leaveButton: 'Disiscrivimi',
+    confirmed: 'Sei nella lista d’attesa. Grazie!', removed: 'La tua email è stata tolta dalla lista d’attesa.',
+    linkFailed: 'Questo link non può essere usato. Scrivici a support@korababy.app.',
+    sending: 'Invio…',
+    checkInbox: 'Controlla la tua casella: ti aspetta un link di conferma. Se non c’è, guarda anche nella cartella spam. Se il tuo indirizzo è già nella lista, non devi fare altro.',
+    couldntAdd: 'Non siamo riusciti ad aggiungerti ora. Riprova più tardi.'
+  },
+  fr: {
+    pageTitle: 'Rejoins la liste d’attente de Kora Baby',
+    description: 'Reçois un e-mail quand Kora Baby arrive sur iPhone. Sommeil, repas, premiers aliments et les petits détails, réunis au même endroit.',
+    privacy: 'Confidentialité', support: 'Assistance',
+    eyebrow: 'BIENTÔT SUR IPHONE',
+    h1: 'Les petites choses, ensemble.',
+    lead: 'Sommeil, repas, premiers aliments et les notes que tu veux garder. Un endroit calme pour la journée de ton bébé, partagé avec les personnes qui s’en occupent.',
+    h2: 'Rejoins la liste d’attente',
+    cardLead: 'Reçois un e-mail quand Kora Baby arrive. Une app conçue et créée par maman et papa.',
+    emailLabel: 'Adresse e-mail',
+    consentBefore: 'Envoie-moi des e-mails sur le lancement de Kora Baby. Je peux me désinscrire à tout moment. Lis la ',
+    consentLink: 'notice de confidentialité de la liste d’attente', consentAfter: '.',
+    button: 'M’inscrire',
+    small: 'Nous t’enverrons un lien pour confirmer ton adresse. La liste d’attente ne réserve pas l’une des 100 premières places de famille ; celles-ci se confirment dans Kora Baby.',
+    note: 'La Suisse d’abord. Kora Baby arrive sur iPhone. Android est prévu plus tard, sans date promise.',
+    confirmTitle: 'Confirme ton e-mail', leaveTitle: 'Quitter la liste d’attente',
+    confirmLead: 'Un geste et tu es sur la liste.', leaveLead: 'Tu peux retirer ton e-mail de la liste ici.',
+    confirmButton: 'Confirmer mon e-mail', leaveButton: 'Me désinscrire',
+    confirmed: 'Tu es sur la liste d’attente. Merci !', removed: 'Ton e-mail a été retiré de la liste d’attente.',
+    linkFailed: 'Ce lien n’a pas pu être utilisé. Écris-nous à support@korababy.app.',
+    sending: 'Envoi…',
+    checkInbox: 'Regarde ta boîte de réception : un lien de confirmation t’attend. S’il n’y est pas, regarde aussi dans tes spams. Si ton adresse est déjà sur la liste, tu n’as rien d’autre à faire.',
+    couldntAdd: 'Nous n’avons pas pu t’ajouter pour l’instant. Réessaie plus tard.'
+  }
+};
+const LANG = (() => {
+  const asked = String(new URLSearchParams(location.search).get('lang') || '').toLowerCase();
+  if (WORDS[asked]) return asked;
+  const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+  for (const l of langs) { const two = String(l).slice(0, 2).toLowerCase(); if (WORDS[two]) return two; }
+  return 'en';
+})();
+const W = WORDS[LANG];
+document.documentElement.lang = LANG;
+document.title = W.pageTitle;
+document.querySelector('meta[name="description"]').content = W.description;
+for (const node of document.querySelectorAll('[data-w]')) node.textContent = W[node.getAttribute('data-w')];
+// The app's privacy and help pages in the same language; the launch list's own notice keeps the language too.
+for (const a of document.querySelectorAll('[data-href]')) a.href = '../' + (LANG === 'en' ? '' : LANG + '/') + a.getAttribute('data-href');
+if (LANG !== 'en') document.getElementById('notice-link').href = 'privacy.html?lang=' + LANG;
 (() => {
   const endpoint = 'https://mxibrkctbnfoderliiwr.supabase.co/functions/v1/launch-waitlist';
   const form = document.getElementById('signup-form');
@@ -89,32 +206,32 @@
     return response.json();
   }
   if ((action === 'confirm' || action === 'unsubscribe') && token && /^[A-Za-z0-9_-]{32,128}$/.test(token)) {
-    document.querySelector('.card h2').textContent = action === 'confirm' ? 'Confirm your email' : 'Leave the launch list';
-    document.querySelector('.card > p').textContent = action === 'confirm' ? 'One tap and you’ll be on the list.' : 'You can remove your email from the list here.';
+    document.querySelector('.card h2').textContent = action === 'confirm' ? W.confirmTitle : W.leaveTitle;
+    document.querySelector('.card > p').textContent = action === 'confirm' ? W.confirmLead : W.leaveLead;
     form.innerHTML = '';
     const act = document.createElement('button');
     act.type = 'button';
-    act.textContent = action === 'confirm' ? 'Confirm my email' : 'Unsubscribe';
+    act.textContent = action === 'confirm' ? W.confirmButton : W.leaveButton;
     const message = document.createElement('p');
     message.className = 'status'; message.setAttribute('role','status');
     form.append(act,message);
     act.addEventListener('click', async () => {
       act.disabled = true;
-      try { await request({action,token}); message.textContent = action === 'confirm' ? 'You’re on the launch list. Thank you!' : 'You’ve been removed from the launch list.'; history.replaceState(null,'',location.pathname); }
-      catch { message.textContent = 'That link could not be used. Please contact support@korababy.app.'; act.disabled = false; }
+      try { await request({action,token}); message.textContent = action === 'confirm' ? W.confirmed : W.removed; history.replaceState(null,'',location.pathname + location.search); }
+      catch { message.textContent = W.linkFailed; act.disabled = false; }
     });
     return;
   }
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
-    button.disabled = true; status.textContent = 'Sending…';
+    button.disabled = true; status.textContent = W.sending;
     try {
-      await request({action:'subscribe',email:document.getElementById('email').value,consent:document.getElementById('consent').checked,website:document.getElementById('website').value,locale:'en'});
-      status.textContent = 'Check your inbox for a confirmation link. If you already joined, there’s nothing else to do.';
+      await request({action:'subscribe',email:document.getElementById('email').value,consent:document.getElementById('consent').checked,website:document.getElementById('website').value,locale:LANG});
+      status.textContent = W.checkInbox;
       form.reset();
     } catch {
-      status.textContent = 'We couldn’t add you just now. Please try again later.';
+      status.textContent = W.couldntAdd;
     } finally { button.disabled = false; }
   });
 })();
