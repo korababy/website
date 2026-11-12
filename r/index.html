@@ -1,0 +1,134 @@
+<!doctype html>
+<!-- Kora Baby — r/index.html: the page a family's referral link opens (LAUNCH 12.7, Saga, 2026-10-25, on Ori's lend D270).
+     The link is https://korababy.app/r/?c=<CODE>, made by KoraReferral.link(for:) and shared by Invite friends while the
+     server's programme is open. A query, not a path: GitHub Pages serves /r/ as one static page and cannot route /r/<CODE>.
+     ⚠ Nothing assumes the code survives the App Store: the friend TYPES it in Kora Baby (Settings → Invite friends → "Have a code
+     from a friend?") — the shared message carries the code itself too. Universal links (the app opened straight from this
+     link) are after launch.
+     The code is read as strictly as the app reads it (KoraReferral.code(fromLink:)): exactly eight characters of the server's
+     alphabet, upper case, or nothing — anything else shows "no code", never a guess. The page sends nothing anywhere: no
+     cookie, no storage, nothing loaded from another site, one inline script that only reads its own address.
+     "30 days" and "your first month is free" are the offer's version 1 (migration 057's referral_terms; Petru 2026-10-11 and
+     2026-10-15) — a new version of the offer changes this page in the same session.
+     Words: English by Saga from the app's own lines; German, Italian and French are Iris's (until they land, those readers
+     get the English). Informal in every language (du, tu, tu). Not indexed by search engines. -->
+<html lang="en" data-look="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Kora Baby — A friend’s code</title>
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .code { font-family: "Poppins", system-ui, sans-serif; font-weight: 700; font-size: clamp(40px, 11vw, 64px);
+          letter-spacing: 0.08em; margin: 0 0 12px; user-select: all; overflow-wrap: anywhere; }
+  .steps { color: var(--soft); font-size: 17px; padding-left: 1.3em; margin: 26px 0 30px; max-width: 34em; }
+  .steps li { margin: 0 0 10px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="wrap">
+
+<header class="bar">
+  <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Kora Baby</a>
+</header>
+
+<main class="doc">
+<h1 data-w="title">A friend recommended Kora Baby</h1>
+<p class="lead" data-w="lead">Sleep, feeds, diapers, all of it in one quiet place.</p>
+
+<section id="has-code" hidden>
+  <p class="eyebrow" data-w="eyebrow">Your friend’s code</p>
+  <p class="code" id="code" aria-live="polite"></p>
+  <p class="under" data-w="offer">Enter it in your first 30 days and your first month is free.</p>
+</section>
+
+<section id="no-code" hidden>
+  <p class="lead" data-w="nocode">This link has no code in it. Ask your friend for theirs — it is eight letters and numbers.</p>
+</section>
+
+<ol class="steps">
+  <li data-w="step1">Get Kora Baby on the App Store.</li>
+  <li data-w="step2">In Kora Baby, open Settings → Invite friends → Have a code from a friend?</li>
+</ol>
+
+<a class="btn" href="https://apps.apple.com/app/id6789930203" data-w="store">Get Kora Baby on the App Store</a>
+</main>
+
+</div>
+</div>
+<script>
+(function () {
+  // The offer's words per language. de/it/fr: Iris's to write (informal — du, tu, tu); an absent key reads the English.
+  // Iris, 2026-10-25: "friend" is said without a gender — Freunde in German, a famiglia amica / famille amie in
+  // Italian and French, the app's own words for the code switch; step2 quotes the app's catalogue exactly.
+  var WORDS = {
+    en: {},
+    de: {
+      title: 'Freunde empfehlen dir Kora Baby',
+      lead: 'Schlaf, Mahlzeiten, Windeln, alles an einem ruhigen Ort.',
+      eyebrow: 'Der Code deiner Freunde',
+      offer: 'Gib ihn in deinen ersten 30 Tagen ein, und dein erster Monat ist gratis.',
+      nocode: 'In diesem Link steckt kein Code. Frag deine Freunde nach ihrem — er hat acht Buchstaben und Ziffern.',
+      step1: 'Lade Kora Baby im App Store herunter.',
+      step2: 'Öffne in Kora Baby Einstellungen → Freunde einladen → Hast du einen Code von Freunden?',
+      store: 'Kora Baby im App Store laden',
+      pageTitle: 'Kora Baby — Der Code deiner Freunde'
+    },
+    it: {
+      title: 'Una famiglia amica ti consiglia Kora Baby',
+      lead: 'Sonno, poppate, pannolini, tutto in un unico posto tranquillo.',
+      eyebrow: 'Il codice della famiglia amica',
+      offer: 'Inseriscilo entro i tuoi primi 30 giorni e il primo mese è gratis.',
+      nocode: 'Questo link non contiene un codice. Chiedi il codice alla famiglia amica: sono otto lettere e cifre.',
+      step1: 'Scarica Kora Baby dall’App Store.',
+      step2: 'In Kora Baby, apri Impostazioni → Invita amici → Hai un codice da una famiglia amica?',
+      store: 'Scarica Kora Baby dall’App Store',
+      pageTitle: 'Kora Baby — Il codice di una famiglia amica'
+    },
+    fr: {
+      title: 'Une famille amie te recommande Kora Baby',
+      lead: 'Sommeil, repas, couches, le tout dans un seul endroit tranquille.',
+      eyebrow: 'Le code de la famille amie',
+      offer: 'Saisis-le dans tes 30 premiers jours et ton premier mois est offert.',
+      nocode: 'Ce lien ne contient pas de code. Demande le sien à la famille amie — il compte huit lettres et chiffres.',
+      step1: 'Télécharge Kora Baby sur l’App Store.',
+      step2: 'Dans Kora Baby, ouvre Réglages → Inviter des amis → Tu as un code d’une famille amie ?',
+      store: 'Télécharger Kora Baby sur l’App Store',
+      pageTitle: 'Kora Baby — Le code d’une famille amie'
+    }
+  };
+  var langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']);
+  var lang = 'en';
+  for (var i = 0; i < langs.length; i++) {
+    var l = String(langs[i]).slice(0, 2).toLowerCase();
+    if (l === 'en' || l === 'de' || l === 'it' || l === 'fr') { lang = l; break; }
+  }
+  var w = WORDS[lang] || {};
+  if (Object.keys(w).length) {
+    document.documentElement.lang = lang;
+    var nodes = document.querySelectorAll('[data-w]');
+    for (var j = 0; j < nodes.length; j++) {
+      var k = nodes[j].getAttribute('data-w');
+      if (w[k]) nodes[j].textContent = w[k];
+    }
+    if (w.pageTitle) document.title = w.pageTitle;
+  }
+
+  // Strict, as the app: one `c`, exactly eight characters of the server's alphabet (no 0, O, 1, I), never tidied.
+  var cs = new URLSearchParams(location.search).getAll('c');
+  var code = (cs.length === 1 && /^[A-HJ-NP-Z2-9]{8}$/.test(cs[0])) ? cs[0] : null;
+  if (code) {
+    document.getElementById('code').textContent = code.slice(0, 4) + ' ' + code.slice(4);
+    document.getElementById('has-code').hidden = false;
+  } else {
+    document.getElementById('no-code').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>

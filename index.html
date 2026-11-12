@@ -15,6 +15,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kora Baby — Your baby’s day, together</title>
 <meta name="description" content="Sleep, feeds, diapers, meals, milestones and the family’s notes in one shared record. Kora Baby, for iPhone.">
+<link rel="alternate" hreflang="en" href="./">
+<link rel="alternate" hreflang="de" href="de/">
+<link rel="alternate" hreflang="it" href="it/">
+<link rel="alternate" hreflang="fr" href="fr/">
 <link rel="icon" href="img/icon.png">
 <style>
 @font-face { font-family: "Poppins"; font-weight: 500; font-display: swap; src: url("fonts/Poppins_500Medium.ttf"); }
@@ -50,20 +54,30 @@ a { color: inherit; }
 /* 1 · The bar */
 .bar { position: sticky; top: 0; z-index: 20; background: var(--bar); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-bottom: 1px solid var(--line); }
 .bar .in { display: flex; align-items: center; gap: 22px; height: 68px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; text-decoration: none; letter-spacing: -.02em; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; text-decoration: none; letter-spacing: -.02em; white-space: nowrap; flex-shrink: 0; }   /* D344: the name never breaks (rule 15) */
 .brand img { width: 32px; height: 32px; border-radius: 9px; }
 .menu { display: flex; gap: 4px; margin-right: auto; }
 .menu a { text-decoration: none; font: 500 15px "Inter"; color: var(--soft); padding: 8px 12px; border-radius: 99px; }
 .menu a:hover { color: var(--ink); background: var(--panel); }
 .bar .btn { padding: 10px 18px; font-size: 14px; }
+/* The four languages (D344, 2026-11-08): in the menu, so a phone shows them in the opened menu. */
+.langs { display: flex; gap: 2px; align-items: center; margin-left: 6px; }
+.menu .langs a, .langs span { font: 600 13px "Poppins"; padding: 6px 8px; border-radius: 99px; color: var(--soft); text-decoration: none; }
+.langs [aria-current] { color: var(--ink); background: var(--panel); }
 .icon-btn { width: 40px; height: 40px; border-radius: 99px; border: 0; background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; }
 .icon-btn svg { width: 20px; height: 20px; }
 .burger { display: none; }
+/* D344 (2026-11-08): with the language switch, the bar is tighter — a little less air, and from 1240 wide nothing in it
+   breaks onto two lines in any of the four languages (measured: EN 130 px spare, DE 51, IT 52, FR fits after "Vie privée").
+   Narrower than that a long item may take two lines (rule 8); at 860 the menu folds away as before. */
+@media (min-width: 861px) { .menu a { padding: 8px 10px; } .bar .in { gap: 14px; } }
+@media (min-width: 1240px) { .menu a, .bar .btn { white-space: nowrap; } }
 @media (max-width: 860px) {
   .burger { display: grid; }
   .menu { position: fixed; left: 0; right: 0; top: 68px; flex-direction: column; padding: 14px 20px 22px; background: var(--page); border-bottom: 1px solid var(--line);
     opacity: 0; transform: translateY(-6px); pointer-events: none; transition: .25s; }
   .menu a { font: 600 22px "Poppins"; color: var(--ink); }
+  .langs { margin: 10px 0 0 4px; }
   .menu-open .menu { opacity: 1; transform: none; pointer-events: auto; }
   .bar .btn { display: none; }
 }
@@ -152,10 +166,11 @@ footer p { margin: 6px 0; max-width: 90ch; }
   <nav class="menu" aria-label="Menu">
     <a href="#features">Features</a>
     <a href="#plans">Plans</a>
-    <a href="#hundred">First 100 families</a>
+    <a href="#hundred">First 20 families</a>
     <a href="#story">Our story</a>
     <a href="support.html">Support</a>
     <a href="privacy.html">Privacy</a>
+    <span class="langs" aria-label="Language"><span aria-current="true" lang="en">EN</span><a href="de/" hreflang="de" lang="de">DE</a><a href="it/" hreflang="it" lang="it">IT</a><a href="fr/" hreflang="fr" lang="fr">FR</a></span>
   </nav>
   <a class="btn" href="join/index.html">Join launch list</a>
   <button class="icon-btn" data-look-toggle aria-label="Light or dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
@@ -172,10 +187,10 @@ footer p { margin: 6px 0; max-width: 90ch; }
       <p>Sleep, feeds, diapers, meals and milestones in one record the whole family shares — quick enough to use half asleep.</p>
       <a class="btn" href="join/index.html">Join the launch list</a>
     </div>
-    <div class="stage" data-reveal style="--d:2"><div class="phone"><div class="scr"><img data-shot="day-wake" alt="Kora’s Sleep page, the night logged"></div></div></div>
+    <div class="stage" data-reveal style="--d:2"><div class="phone"><div class="scr"><img data-shot="day-wake" alt="Kora Baby’s Sleep page, the night logged"></div></div></div>
   </div>
   <div class="second" data-reveal>
-    <div><h2>The night, in two taps.</h2><p>Bedtime and the wake-up go in before anyone has made coffee — and everyone you share Kora with sees it at once.</p></div>
+    <div><h2>The night, in two taps.</h2><p>Bedtime and the wake-up go in before anyone has made coffee — and everyone you share Kora Baby with sees it at once.</p></div>
     <a class="btn ghost" href="#features">See every feature</a>
   </div>
 </div></section>
@@ -193,8 +208,8 @@ footer p { margin: 6px 0; max-width: 90ch; }
 <div id="features"></div>
 
 <section class="wrap" id="hundred"><div class="call">
-  <h2 data-reveal>The first hundred families.</h2>
-  <p data-reveal>The full app, free, for good — confirmed in Kora and belonging to the household. Switzerland first, on iPhone.</p>
+  <h2 data-reveal>The first 20 families.</h2>
+  <p data-reveal>The full app, free, for good — confirmed in Kora Baby and belonging to the household. Switzerland first, on iPhone.</p>
   <a class="btn" href="mailto:support@korababy.app" data-reveal>Ask about a place</a>
 </div></section>
 
@@ -214,9 +229,9 @@ footer p { margin: 6px 0; max-width: 90ch; }
       <ul><li>Sleep suggestions from your baby’s own days</li><li>Their Story, month by month</li><li>Records, and every stat back to day one</li><li>Weekly meal and activity plans</li><li>Sleep on the lock screen</li></ul>
     </article>
     <article class="plan" data-reveal style="--d:2">
-      <h3>First 100 families</h3>
+      <h3>First 20 families</h3>
       <div class="price">Free <small>for good</small></div>
-      <p>Premium included, confirmed in Kora. Not a reservation made by email.</p>
+      <p>Premium included, confirmed in Kora Baby. Not a reservation made by email.</p>
       <ul><li>Everything in Premium</li><li>Belongs to the household</li><li>Switzerland first</li></ul>
     </article>
   </div>
@@ -225,14 +240,14 @@ footer p { margin: 6px 0; max-width: 90ch; }
 <section class="idea" id="story"><div class="wrap">
   <div class="second" data-reveal>
     <!-- 15.30 / 16.3 — Juno's v2 (2026-10-19), word for word: no names, told by mom and dad. -->
-    <div><h2>Our story.</h2><p>We’re mom and dad. Kora began as an app for our own family. We wanted one place for the small details of our baby’s day, so we could keep track together with the people caring for our baby.</p><p>Now we’re preparing to share Kora with other families. It brings sleep, feeds, diapers and family notes into a shared record on iPhone. It comes from our experience as parents, not clinical expertise. It helps you keep a record; it does not tell you what is right for your child.</p><p class="by">Mom and dad</p></div>
+    <div><h2>Our story.</h2><p>We’re mom and dad. Kora Baby began as an app for our own family. We wanted one place for the small details of our baby’s day, so we could keep track together with the people caring for our baby.</p><p>Now we’re preparing to share Kora Baby with other families. It brings sleep, feeds, diapers and family notes into a shared record on iPhone. It comes from our experience as parents, not clinical expertise. It helps you keep a record; it does not tell you what is right for your child.</p><p class="by">Mom and dad</p></div>
   </div>
 </div></section>
 
 </main>
 
 <footer><div class="wrap">
-  <div class="row"><b style="color:var(--ink)">Kora Baby</b><a href="mailto:support@korababy.app">support@korababy.app</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></div>
+  <div class="row"><b style="color:var(--ink)">Kora Baby</b><a href="mailto:support@korababy.app">support@korababy.app</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms of use</a></div>
   <p>Kora Baby records what you enter. It does not provide medical advice. Food pictures and general information do not replace supervision or professional advice.</p>
 </div></footer>
 
@@ -245,7 +260,7 @@ footer p { margin: 6px 0; max-width: 90ch; }
   const IDEAS = [
     ['Sleep, sorted.', 'Start a nap with one tap, or add it afterwards. The night’s bedtime and wake-up on one dial.', 'How sleep works',
       [['Nap', 'day-nap'], ['Night', 'day-wake'], ['Today', 'day-nap2']], ''],
-    ['Every feed, remembered.', 'Left or right, bottle or breast, pumped or eaten — and Kora keeps which side was last.', 'How feeds work',
+    ['Every feed, remembered.', 'Left or right, bottle or breast, pumped or eaten — and Kora Baby keeps which side was last.', 'How feeds work',
       [['Nursing', 'day-nursing', 42], ['Bottle', 'day-bottle', 41], ['Pump', 'day-pump'], ['Solids', 'day-feed']], ''],
     ['Food, from the first spoon.', 'A recipe for every stage, every food they have tried ticked off, and one shopping list for the house.', 'Explore the foods',
       [['Recipes', 'day-recipe', 87], ['Foods', 'day-foods'], ['Shopping', 'day-shopping']], ''],
@@ -254,7 +269,7 @@ footer p { margin: 6px 0; max-width: 90ch; }
       'Every milestone carries its window: some babies take their time, some skip a step — both are ordinary.'],
     ['Health and growth, written down.', 'Temperatures, medicines and measurements, kept exactly as you entered them — ready for the pediatrician.', 'See health',
       [['Health', 'day-health'], ['Growth', 'day-growth'], ['Visits', 'day-visit']],
-      'Kora records; it never reads a number for you. It is not medical advice.'],
+      'Kora Baby records; it never reads a number for you. It is not medical advice.'],
     ['One record. The whole family.', 'Invite the other parent, a grandparent, the nanny. Everyone sees the same day as it happens — without a single message.', 'How sharing works',
       [['Timeline', 'day-timeline'], ['Reminders', 'day-reminder']], 'You choose who joins, and each person sees the same record.'],
     ['The weeks, made clear.', 'Calm charts, a streak, a record nap — and their Story, month by month, ending in their first year.', 'See insights',
@@ -288,7 +303,7 @@ footer p { margin: 6px 0; max-width: 90ch; }
         const root = document.documentElement;
         const look = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         img.onload = () => { img.style.opacity = 1; };
-        img.src = 'shots/' + b.dataset.shotTo + '-' + look + '.jpg';
+        img.src = (root.dataset.shots || 'shots/') + b.dataset.shotTo + '-' + look + '.jpg';   // de/fr/it say "../shots/" (D344)
       }, 180);
     }));
   });

@@ -109,12 +109,15 @@
 
   // Light and dark: the phone's own setting first; the button flips it for this visit only (nothing is stored).
   function look() { return root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  // Where the screens are: the page may say so on <html data-shots> — the published German, French and Italian front pages
+  // sit one folder down (de/, fr/, it/) and say "../shots/" (D344, 2026-11-08). ⏪ One move back: 'shots/' inline again.
+  const SHOTS = root.dataset.shots || 'shots/';
   function setShots() {
     const l = look();
     document.querySelectorAll('img[data-shot]').forEach((im) => {
-      const want = 'shots/' + im.dataset.shot + '-' + l + '.jpg';
-      if (!im.src.endsWith(want.slice(2))) {
-        im.onerror = () => { im.onerror = null; im.src = '../img/home-' + l + '.jpg'; };
+      const want = SHOTS + im.dataset.shot + '-' + l + '.jpg';
+      if (!im.src.endsWith(want.replace(/^(\.\.\/)+/, ''))) {
+        im.onerror = () => { im.onerror = null; im.src = SHOTS + 'home-' + l + '.jpg'; };
         im.src = want;
       }
     });
