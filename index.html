@@ -156,6 +156,25 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   .lk-nav { display: none; }
   .tile.n4, .tile.n3, .tile.n2 { grid-column: auto; }
 }
+/* ⚖ THE CLOSER LOOK ON A PHONE IS "A" — Petru, 2026-11-14 00:35, holding the lab pages lk-a and lk-b: "Let's do A. But can
+   you make it a bit smaller so it fits on the screen? … I'm not able to see on my phone screen like the full section."
+   One page at a time, swiped; the whole phone; dots — and the WHOLE stage fits one screen (100svh less the bar), so
+   nothing is scrolled while swiping. ❌ B, the plus list that opens in place (lk-b). ❌ the first one: chips in a second
+   row and the phone cut. One move back: delete this block and the lkMobile call. */
+.lk-m { display: none; }
+@media (max-width: 760px) {
+  .look { --lkh: clamp(500px, calc(100svh - 76px), 660px); height: var(--lkh); scroll-margin-top: 66px; }
+  .look > ol, .look > .lk-stage, .look > .lk-cap, .look > .lk-nav { display: none !important; }
+  .lk-m { display: flex; flex-direction: column; flex: 1; min-height: 0; order: 2; }
+  .lk-groups { display: grid; grid-template-columns: repeat(3, 1fr); margin: 12px 12px 0; overflow: visible; flex: none; }
+  .lk-groups button { white-space: normal; padding: 5px 4px; font-size: 12px; line-height: 1.2; min-height: 40px; }
+  .lk-rail { flex: 1; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; } .lk-rail::-webkit-scrollbar { display: none; }
+  .lk-card { flex: 0 0 100%; scroll-snap-align: center; scroll-snap-stop: always; padding: 16px 22px 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .lk-card b { font: 600 19px/1.2 Poppins; letter-spacing: -.02em; color: #fff; min-height: 2.4em; display: flex; align-items: flex-end; }
+  .lk-card p { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.36; margin: 4px auto 12px; max-width: 23em; min-height: 5.44em; }
+  .lk-card .phone { position: relative; left: auto; top: auto; transform: none; flex: none; height: calc(var(--lkh) - 250px); width: auto; box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2); }
+  .lk-dots { flex: none; display: flex; justify-content: center; align-items: center; gap: 7px; padding: 12px 0 14px; } .lk-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .lk-dots i.on { background: #fff; width: 22px; }
+}
 </style>
 </head>
 <body>
@@ -267,6 +286,14 @@ document.querySelectorAll('[data-bill]').forEach((b) => b.addEventListener('clic
   document.querySelector('[data-per]').textContent = y ? T[0] : T[1];
   document.querySelector('[data-note]').textContent = y ? T[2] : T[3];
 }));
+function lkMobile(items, box) {   // the closer look on a phone: one page at a time, swiped (his "A", 2026-11-14)
+  let m = box.querySelector('.lk-m'); if (!m) { m = document.createElement('div'); m.className = 'lk-m'; box.appendChild(m); }
+  m.innerHTML = '<div class="lk-rail">' + items.map((x) => '<article class="lk-card"><b>' + x[3] + '</b><p>' + x[4] + '</p><div class="phone"><img loading="lazy" data-s="' + x[1] + '" alt="' + x[0] + '"></div></article>').join('') + '</div><div class="lk-dots">' + items.map(() => '<i></i>').join('') + '</div>';
+  m.querySelectorAll('img').forEach((i) => { i.src = 'shots/' + i.dataset.s + '.jpg'; });
+  const rail = m.querySelector('.lk-rail'), dots = m.querySelectorAll('.lk-dots i');
+  const mark = () => { const n = Math.max(0, Math.min(items.length - 1, Math.round(rail.scrollLeft / Math.max(1, rail.clientWidth)))); dots.forEach((d, k) => d.classList.toggle('on', k === n)); if (rail.clientWidth) box.style.setProperty('--tint', items[n][2]); };
+  rail.addEventListener('scroll', mark, { passive: true }); mark();
+}
 const LK = [
   ['Feed & care', [
     ['Nursing', 'nursing', '#7d6420', 'Left or right, timed.', 'Tap a side to start the timer. Kora Baby keeps which side was last.'],
@@ -311,7 +338,7 @@ const LK = [
     groups.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-selected', k === g));
     list.innerHTML = items.map((m) => '<li><button><i></i>' + m[0] + '</button><div><b>' + m[3] + '</b> ' + m[4] + '</div></li>').join('');
     list.querySelectorAll('li > button').forEach((b, k) => b.addEventListener('click', () => show(k)));
-    list.scrollLeft = 0; show(0); }
+    list.scrollLeft = 0; show(0); lkMobile(items, box); }
   groups.querySelectorAll('button').forEach((b, k) => b.addEventListener('click', () => group(k)));
   function step(d) { const n = cur + d; if (n >= items.length) group((grp + 1) % LK.length); else if (n < 0) { group((grp + LK.length - 1) % LK.length); show(items.length - 1); } else show(n); }
   document.getElementById('lk-next').addEventListener('click', () => step(1));
