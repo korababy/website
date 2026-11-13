@@ -28,6 +28,8 @@ a { color: inherit; text-decoration: none; }
 .bar nav a[aria-current="page"] { background: rgba(255,255,255,.1); color: var(--ink); }
 .langs { display: flex; gap: 12px; font: 500 12px Inter, sans-serif; letter-spacing: .08em; color: var(--soft); }
 .langs [aria-current] { color: var(--ink); } .langs a:hover { color: var(--ink); }
+/* On a phone the pages and the languages are behind a menu (Petru, 2026-11-14): <details>, no script. Hidden on a computer. */
+.menu { display: none; }
 
 /* The top: the page's name, and who to write to. */
 .doc { padding: 72px 0 40px; }
@@ -51,7 +53,7 @@ a { color: inherit; text-decoration: none; }
 .part strong { color: var(--ink); font-weight: 500; }
 .part mark.todo { background: #ffd54a; color: #15120a; border-radius: 4px; padding: 0 3px; }  /* a [[NEEDS PETRU: …]] line, shown as the app shows it */
 .part[open] > p { animation: part-in .35s cubic-bezier(.2,.7,.2,1); }
-@keyframes part-in { from { opacity: 0; transform: translateY(-6px); } }
+@keyframes part-in { from { transform: translateY(-6px); } }  /* never from invisible: a paused animation (a background tab) must not hide the policy's words */
 
 footer { margin-top: 64px; border-top: 1px solid var(--edge); background: var(--tile); padding: 36px 0 44px; font-size: 13px; color: var(--soft); }
 footer .wrap { max-width: 1120px; }
@@ -60,8 +62,17 @@ footer .row span { color: var(--ink); font: 600 14px Poppins, sans-serif; }
 footer a:hover { color: var(--ink); }
 
 @media (max-width: 700px) {
-  .bar .wrap { padding-top: 8px; padding-bottom: 8px; }
-  .bar nav { order: 3; width: 100%; margin: 0 -6px; overflow-x: auto; scrollbar-width: none; } .bar nav::-webkit-scrollbar { display: none; }
+  .bar .wrap > nav, .bar .wrap > .langs { display: none; }
+  .menu { display: block; }
+  .menu summary { list-style: none; cursor: pointer; display: grid; place-content: center; gap: 6px; width: 40px; height: 40px; margin-right: -8px; -webkit-tap-highlight-color: transparent; }
+  .menu summary::-webkit-details-marker { display: none; }
+  .menu summary i { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .25s; }
+  .menu[open] summary i:first-child { transform: translateY(4px) rotate(45deg); } .menu[open] summary i:last-child { transform: translateY(-4px) rotate(-45deg); }
+  .menu .sheet { position: absolute; left: 0; right: 0; top: 100%; padding: 6px 24px 26px; background: var(--bg); border-bottom: 1px solid var(--edge); box-shadow: 0 30px 60px rgba(0,0,0,.6); }
+  .menu nav { display: flex; flex-direction: column; gap: 0; }
+  .menu nav a { font: 600 22px Poppins, sans-serif; letter-spacing: -.02em; color: var(--soft); padding: 15px 0; border-radius: 0; border-bottom: 1px solid var(--edge); background: none; }
+  .menu nav a[aria-current="page"] { color: var(--ink); background: none; }
+  .menu .langs { margin-top: 22px; gap: 22px; font-size: 14px; }
   .doc { padding-top: 44px; } .doc .lead { margin-bottom: 32px; font-size: 17px; }
   .part { border-radius: 20px; } .part summary { padding: 18px 20px; } .part > p { margin: 0 20px 12px; } .part > p:last-child { margin-bottom: 22px; }
 }

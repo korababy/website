@@ -50,7 +50,7 @@ header .btn { padding: 8px 16px; font-size: 13px; }
 .hero p.lead { font-size: clamp(18px, 2.1vw, 22px); color: var(--soft); max-width: 34em; margin: 0 auto 28px; }
 .hero .lead.short { display: none; }
 .cta { display: flex; gap: 22px; justify-content: center; align-items: center; flex-wrap: wrap; }
-.sky { margin: 56px auto 0; max-width: 1240px; border-radius: 44px; background: radial-gradient(70% 90% at 50% 105%, #5b6170, transparent 70%), linear-gradient(180deg, #23262d, #14161a 70%); box-shadow: inset 0 0 0 1px var(--edge); height: clamp(420px, 56vw, 700px); position: relative; overflow: hidden; }
+.sky { margin: 56px auto 0; max-width: 1240px; border-radius: 44px; /* no panel: the three phones stand on the page itself (Petru, 2026-11-14 00:37). One move back: background: radial-gradient(70% 90% at 50% 105%, #5b6170, transparent 70%), linear-gradient(180deg, #23262d, #14161a 70%); box-shadow: inset 0 0 0 1px var(--edge). */ height: clamp(420px, 56vw, 700px); position: relative; overflow: hidden; }
 .phone { position: absolute; width: clamp(190px, 25vw, 320px); aspect-ratio: 1206/2622; border-radius: 13.5% / 6.2%; background: #0c0d10; padding: 1.1%; box-shadow: 0 50px 100px -30px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.2) inset; }
 .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 12.4% / 5.6%; display: block; }
 /* The first screen shows all THREE phones, WHOLE, on a phone too (Petru, 2026-11-14 00:03: "why not have the whole all three screenshots?"). Sized by the panel's height so none is cut. One move back: p1 top 9%, p0/p2 top 20%, the phone's own width, and p0/p2 hidden on a phone. */
@@ -164,15 +164,24 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
 .lk-m { display: none; }
 @media (max-width: 760px) {
   .look { --lkh: clamp(500px, calc(100svh - 76px), 660px); height: var(--lkh); scroll-margin-top: 66px; }
+  /* ⚖ Petru, 2026-11-14 00:55: "instead of having the card, can you make it to be like a full wide screen instead of just of the card?" — on a phone the stage runs edge to edge, no rounded card: only the page's colour glow behind the phone. One move back: delete this line. */
+  /* …and it is still a SECTION OF ITS OWN (Petru, a minute later: "not necessarily directly in the background. I still want to have like a container segregation, and like a border at the top, at the bottom, just to basically highlight this is the carousel section"): a band with its own ground and a line above and below. ❌ no ground at all (the first try). */
+  .look { margin-left: -24px; margin-right: -24px; border-radius: 0; box-shadow: none; border-top: 1px solid rgba(255,255,255,.13); border-bottom: 1px solid rgba(255,255,255,.13); background: radial-gradient(120% 62% at 50% 60%, var(--tint), transparent 78%), linear-gradient(180deg, #1d2026, #14161b); }
   .look > ol, .look > .lk-stage, .look > .lk-cap, .look > .lk-nav { display: none !important; }
   .lk-m { display: flex; flex-direction: column; flex: 1; min-height: 0; order: 2; }
-  .lk-groups { display: grid; grid-template-columns: repeat(3, 1fr); margin: 12px 12px 0; overflow: visible; flex: none; }
-  .lk-groups button { white-space: normal; padding: 5px 4px; font-size: 12px; line-height: 1.2; min-height: 40px; }
+  /* ⚖ Petru, 2026-11-14 00:45: "let's put the whole picture to be the first one. And at the moment it's in two rows. Maybe we need to rename it … And also there's too much text." → the group is first and is "Panoramica"; every group name sits in ONE row; a page is its headline and the phone (its sentence shows on a computer). One move back for the words: delete `.lk-card p { display: none; }` and take 172px back to 250px. */
+  .lk-groups { display: flex; justify-content: space-between; margin: 12px 12px 0; overflow: visible; flex: none; }
+  .lk-groups button { flex: 1 1 auto; white-space: nowrap; padding: 5px 5px; font-size: 12px; letter-spacing: -.01em; line-height: 1.2; min-height: 36px; }
+  #look .sub { display: none; }
   .lk-rail { flex: 1; min-height: 0; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; } .lk-rail::-webkit-scrollbar { display: none; }
-  .lk-card { flex: 0 0 100%; scroll-snap-align: center; scroll-snap-stop: always; padding: 16px 22px 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
-  .lk-card b { font: 600 19px/1.2 Poppins; letter-spacing: -.02em; color: #fff; min-height: 2.4em; display: flex; align-items: flex-end; }
-  .lk-card p { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.36; margin: 4px auto 12px; max-width: 23em; min-height: 5.44em; }
-  .lk-card .phone { position: relative; left: auto; top: auto; transform: none; flex: none; height: calc(var(--lkh) - 250px); width: auto; box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2); }
+  .lk-card { flex: 0 0 100%; scroll-snap-align: center; scroll-snap-stop: always; padding: 16px 14px 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .lk-card b { font: 600 20px/1.2 Poppins; letter-spacing: -.02em; color: #fff; height: 2.4em; display: flex; align-items: center; margin-bottom: 14px; }
+  .lk-card p { display: none; }
+  .lk-card .phone { position: relative; left: auto; top: auto; transform: none; flex: none; height: calc(var(--lkh) - 172px); width: auto; box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2); }
+  /* ⚖ The plans' two columns LINE UP on a phone (Petru, 2026-11-14 00:48, holding the page: "I don't like how the text is not aligned here"): each column is name · price · one small line, each on its own row and never wrapped, so Free and Kora Premium sit level; the price column is wide enough for "CHF 49.95". One move back: delete these three lines. */
+  .cmp { padding-left: 14px; padding-right: 14px; } .cmp .row { grid-template-columns: minmax(0, 1fr) 72px 106px; }
+  .cmp .row.head { align-items: start; } .cmp .row.head h3 { font-size: 14px; white-space: nowrap; } .cmp .pr { font-size: 20px; white-space: nowrap; margin-top: 4px; }
+  .cmp .pr small { display: block; font: 400 13px/1.4 Inter; margin-top: 4px; } .cmp .note { font-size: 13px; line-height: 1.4; margin-top: 4px; text-wrap: balance; }
   .lk-dots { flex: none; display: flex; justify-content: center; align-items: center; gap: 7px; padding: 12px 0 14px; } .lk-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .lk-dots i.on { background: #fff; width: 22px; }
 }
 </style>
@@ -295,7 +304,18 @@ function lkMobile(items, box) {   // the closer look on a phone: one page at a t
   rail.addEventListener('scroll', mark, { passive: true }); mark();
 }
 const LK = [
-  ['Alimentazione e cura', [
+  ['Panoramica', [
+    ['Oggi', 'home', '#3a4a66', 'La sua giornata a colpo d’occhio.', 'L’ultima poppata, i pannolini e i pisolini, in un’unica pagina.'],
+    ['Cronologia', 'timeline', '#3b3b80', 'Tutta la giornata, in ordine.', 'Ogni pisolino, poppata e pannolino così come è andato, fino al giorno della nascita.'],
+    ['Analisi', 'insights', '#7a4a2a', 'Le settimane, chiare.', 'Grafici tranquilli di ciò che hai registrato — e la sua storia, mese dopo mese.'],
+    ['Previsione del sonno', 'accuracy', '#1f5a8a', 'La previsione, accanto a ciò che è successo.', 'Ogni pisolino come Kora Baby lo prevedeva e come è andato. Fa parte di Kora Premium.'],
+    ['Visite', 'visits', '#2c4c6e', 'Pronti per il pediatra.', 'La prossima visita, le tue note per quel giorno e ciò che è stato detto l’ultima volta.'],
+    ['Resoconto', 'report', '#56524a', 'Un resoconto per la visita.', 'Un PDF del periodo che scegli, creato sul tuo telefono. Nulla viene caricato online — scegli tu chi lo riceve.'],
+    ['Promemoria', 'reminders', '#6b5a2a', 'Promemoria, solo se li vuoi.', 'Poppate, pannolini, sonno, visite, medicinali. Ognuno è spento finché non lo attivi.'],
+    ['Meteo', 'weather', '#2a4a7c', 'Fuori casa, vestiti giusti.', 'Il meteo dove sei, ora per ora — e cosa fargli indossare oggi.'],
+    ['Famiglia', 'family', '#4a3a6b', 'Un unico diario. Tutta la famiglia.', 'Invita l’altro genitore, un nonno, la tata. Tutti vedono la stessa giornata mentre accade.']
+  ]],
+  ['Pasti e cura', [
     ['Seno', 'nursing', '#7d6420', 'Sinistra o destra, col timer.', 'Tocca un lato per avviare il timer. Kora Baby ricorda quale lato è stato l’ultimo.'],
     ['Biberon', 'bottle', '#84491f', 'Ogni biberon, contato.', 'La quantità, latte materno o formula, e il tempo dall’ultima poppata.'],
     ['Pappe', 'solids', '#8a3b2c', 'Il cibo, dal primo cucchiaino.', 'Ogni alimento assaggiato, spuntato, e una ricetta per ogni fase.'],
@@ -310,17 +330,6 @@ const LK = [
     ['Traguardi', 'milestones', '#7d6a1c', 'Le prime volte, custodite.', 'Salvati con il giorno in cui sono accaduti. Alcuni bambini si prendono il loro tempo, altri saltano un passaggio — entrambe le cose rientrano nell’ordinario.'],
     ['Attività', 'activities', '#2a6b4b', 'Idee per giocare, scelte per la sua età.', 'Brevi attività per adesso, ordinate per ciò che allenano.'],
     ['Spesa', 'shopping', '#2b5a7c', 'Un’unica lista per la casa.', 'Pannolini, cibo e il resto, su una lista che tutta la famiglia condivide.']
-  ]],
-  ['Il quadro completo', [
-    ['Oggi', 'home', '#3a4a66', 'La sua giornata a colpo d’occhio.', 'L’ultima poppata, i pannolini e i pisolini, in un’unica pagina.'],
-    ['Cronologia', 'timeline', '#3b3b80', 'Tutta la giornata, in ordine.', 'Ogni pisolino, poppata e pannolino così come è andato, fino al giorno della nascita.'],
-    ['Analisi', 'insights', '#7a4a2a', 'Le settimane, chiare.', 'Grafici tranquilli di ciò che hai registrato — e la sua storia, mese dopo mese.'],
-    ['Previsione del sonno', 'accuracy', '#1f5a8a', 'La previsione, accanto a ciò che è successo.', 'Ogni pisolino come Kora Baby lo prevedeva e come è andato. Fa parte di Kora Premium.'],
-    ['Visite', 'visits', '#2c4c6e', 'Pronti per il pediatra.', 'La prossima visita, le tue note per quel giorno e ciò che è stato detto l’ultima volta.'],
-    ['Resoconto', 'report', '#56524a', 'Un resoconto per la visita.', 'Un PDF del periodo che scegli, creato sul tuo telefono. Nulla viene caricato online — scegli tu chi lo riceve.'],
-    ['Promemoria', 'reminders', '#6b5a2a', 'Promemoria, solo se li vuoi.', 'Poppate, pannolini, sonno, visite, medicinali. Ognuno è spento finché non lo attivi.'],
-    ['Meteo', 'weather', '#2a4a7c', 'Fuori casa, vestiti giusti.', 'Il meteo dove sei, ora per ora — e cosa fargli indossare oggi.'],
-    ['Famiglia', 'family', '#4a3a6b', 'Un unico diario. Tutta la famiglia.', 'Invita l’altro genitore, un nonno, la tata. Tutti vedono la stessa giornata mentre accade.']
   ]]
 ];
 (function () {
