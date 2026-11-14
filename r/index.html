@@ -12,7 +12,7 @@
      2026-10-15) — a new version of the offer changes this page in the same session.
      Words: English by Saga from the app's own lines; German, Italian and French are Iris's (until they land, those readers
      get the English). Informal in every language (du, tu, tu). Not indexed by search engines. -->
-<html lang="en" data-look="dark">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,12 +20,37 @@
 <meta name="referrer" content="no-referrer">
 <title>Kora Baby — A friend’s code</title>
 <link rel="icon" href="../img/icon.png">
-<link rel="stylesheet" href="../styles.css">
+<meta name="theme-color" content="#0a0b0e">
 <style>
-  .code { font-family: "Poppins", system-ui, sans-serif; font-weight: 700; font-size: clamp(40px, 11vw, 64px);
-          letter-spacing: 0.08em; margin: 0 0 12px; user-select: all; overflow-wrap: anywhere; }
-  .steps { color: var(--soft); font-size: 17px; padding-left: 1.3em; margin: 26px 0 30px; max-width: 34em; }
-  .steps li { margin: 0 0 10px; }
+  /* The front page's dark look (Petru, 2026-11-14 01:25: "yes"). This page no longer reads ../styles.css (the old blue
+     sheet); the words, the code's rules and the script are untouched. One move back: git revert. */
+  @font-face { font-family: Poppins; font-weight: 600; font-display: swap; src: url("../fonts/Poppins_600SemiBold.ttf"); }
+  @font-face { font-family: Poppins; font-weight: 700; font-display: swap; src: url("../fonts/Poppins_700Bold.ttf"); }
+  @font-face { font-family: Inter; font-weight: 400; font-display: swap; src: url("../fonts/Inter_400Regular.ttf"); }
+  @font-face { font-family: Inter; font-weight: 500; font-display: swap; src: url("../fonts/Inter_500Medium.ttf"); }
+  :root { color-scheme: dark; --ink: #f4f5f7; --soft: #a3a8b4; --bg: #0a0b0e; --tile: #15171c; --edge: rgba(255,255,255,.09); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(70% 40% at 50% 38%, rgba(91,97,112,.3), transparent 72%), var(--bg); background-repeat: no-repeat; color: var(--ink); font: 400 17px/1.55 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+  .bar { display: flex; align-items: center; min-height: 56px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 600 17px Poppins, system-ui, sans-serif; text-decoration: none; }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; display: block; }
+  .doc { padding: 44px 0 64px; }
+  h1 { font: 700 clamp(36px, 8vw, 56px)/1.05 Poppins, system-ui, sans-serif; letter-spacing: -.03em; margin: 0 0 16px; }
+  .lead { font-size: 18px; color: var(--soft); max-width: 34em; margin: 0 0 30px; }
+  section { margin: 0; }
+  #has-code { background: var(--tile); border-radius: 28px; padding: 26px 26px 24px; box-shadow: inset 0 0 0 1px var(--edge), 0 40px 90px -40px rgba(0,0,0,.9); }
+  .eyebrow { font: 500 13px Inter, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin: 0 0 10px; }
+  .code { font-family: Poppins, system-ui, sans-serif; font-weight: 700; font-size: clamp(38px, 11vw, 60px); line-height: 1.1;
+          letter-spacing: 0.08em; margin: 0 0 12px; user-select: all; overflow-wrap: anywhere;
+          background: linear-gradient(135deg, #fbf5e6, #d9bb7c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .under { font-size: 15px; color: var(--soft); margin: 0; }
+  .steps { color: var(--soft); font-size: 17px; padding-left: 1.3em; margin: 30px 0 32px; max-width: 34em; }
+  .steps li { margin: 0 0 10px; } .steps li::marker { color: var(--ink); font-weight: 500; }
+  .btn { display: inline-flex; justify-content: center; font: 600 16px Poppins, system-ui, sans-serif; text-decoration: none; background: var(--ink); color: var(--bg); padding: 15px 26px; border-radius: 99px; }
+  a:focus-visible { outline: 2px solid #9cc0ff; outline-offset: 3px; }
+  @media (max-width: 520px) { .btn { display: flex; } }
   [hidden] { display: none !important; }
 </style>
 </head>
