@@ -123,6 +123,8 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   header nav { flex-direction: column; gap: 0; } header nav a { font: 600 22px Poppins; letter-spacing: -.02em; color: var(--ink); padding: 15px 0; border-bottom: 1px solid var(--edge); }
   .menu .langs { margin-top: 22px; gap: 22px; font-size: 14px; }
   @media (max-width: 350px) { header .btn { display: none; } }
+}
+@media (min-width: 0px) {
   /* FEWER WORDS up front on a phone (Petru, same message: "There is way too much text right at the front"): the headline, one line, the button. */
   .hero { padding-top: 40px !important; } .hero .eyebrow, .hero .lead.long, .hero .cta .link { display: none; } .hero .lead.short { display: block; margin-bottom: 24px; } .sky { margin-top: 40px; } section { padding-top: 84px; }
   .sky { border-radius: 0; height: 440px; } .sky .p1 { top: 8%; height: 84%; } .sky .p0, .sky .p2 { top: 17%; height: 68%; } .sky .p0 { transform: translateX(-121%) rotate(-7deg); } .sky .p2 { transform: translateX(21%) rotate(7deg); }
@@ -155,7 +157,7 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
 .tile.ink { background: var(--ink); color: var(--paper); } .tile.ink p { color: #5b606b; }
 .bento { margin-top: 20px; }
 @media (max-width: 1040px) { .look ol { left: 28px; width: 300px; } .look li > div { font-size: 15px; padding: 18px 20px; } .lk-stage .phone { left: 71%; width: 300px; } #lk-n { display: none; } }
-@media (max-width: 760px) {
+@media (min-width: 0px) {
   .look { height: auto; border-radius: 32px; display: flex; flex-direction: column; background: linear-gradient(180deg, #2b2e36, rgba(43,46,54,0) 30%), radial-gradient(140% 60% at 50% 50%, var(--tint), #101216 80%); }
   .lk-groups { position: static; order: 0; margin: 18px 18px 0; overflow-x: auto; display: flex; scrollbar-width: none; } .lk-groups::-webkit-scrollbar { display: none; } .lk-groups button { padding: 9px 14px; font-size: 13px; flex: 1 0 auto; }
   .lk-stage { position: relative; inset: auto; height: 430px; overflow: hidden; order: 1; } .lk-stage .phone { left: 50%; top: 30px; width: 236px; }
@@ -171,7 +173,7 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
    nothing is scrolled while swiping. ❌ B, the plus list that opens in place (lk-b). ❌ the first one: chips in a second
    row and the phone cut. One move back: delete this block and the lkMobile call. */
 .lk-m { display: none; }
-@media (max-width: 760px) {
+@media (min-width: 0px) {
   .look { --lkh: clamp(500px, calc(100svh - 76px), 660px); height: var(--lkh); scroll-margin-top: 66px; }
   /* ⚖ Petru, 2026-11-14 00:55: "instead of having the card, can you make it to be like a full wide screen instead of just of the card?" — on a phone the stage runs edge to edge, no rounded card: only the page's colour glow behind the phone. One move back: delete this line. */
   /* …and it is still a SECTION OF ITS OWN (Petru, a minute later: "not necessarily directly in the background. I still want to have like a container segregation, and like a border at the top, at the bottom, just to basically highlight this is the carousel section"): a band with its own ground and a line above and below. ❌ no ground at all (the first try). */
@@ -227,7 +229,7 @@ footer { margin-top: 0; } footer b { display: inline-flex; align-items: center; 
   .hero h1 { animation: head .9s cubic-bezier(.2,.7,.2,1) backwards; }
   @keyframes head { from { opacity: 0; transform: translateY(18px); } }
 }
-@media (max-width: 760px) {
+@media (min-width: 0px) {
   .hl-dots { display: flex; justify-content: center; gap: 7px; padding-top: 14px; } .hl-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .hl-dots i.on { background: #fff; width: 22px; }
   .close { padding-top: 84px; } .close .wrap { padding: 72px 24px 80px; }
 }
@@ -266,7 +268,7 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
   .close .k { animation: breathe 5s ease-in-out infinite; }
   @keyframes breathe { 0%, 100% { transform: translateY(0); box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 20px 50px -16px rgba(0,0,0,.9), 0 0 0 rgba(120,150,230,0); } 50% { transform: translateY(-8px); box-shadow: 0 0 0 1px rgba(255,255,255,.22), 0 30px 60px -16px rgba(0,0,0,.9), 0 0 60px rgba(120,150,230,.45); } }
 }
-@media (max-width: 760px) { .ticker { margin-top: 40px; } .fx .sky { --spread: -8px; } }
+@media (min-width: 0px) { .ticker { margin-top: 40px; } .fx .sky { --spread: -8px; } }
 /* ── THE CLOSER LOOK, ENHANCED (Petru, 2026-11-14 01:55: "Enhance also the take a closer look"). Phone: a carousel —
    the page in the middle whole and bright, its neighbours smaller and dim at the sides, one headline above that changes
    with it, a tap on a neighbour brings it in; still one screen high, still swiped. Computer: the phone turns as it
@@ -276,7 +278,7 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .lk-stage .phone.swap { transform: translateX(-50%) perspective(1100px) rotateY(-16deg) translateY(16px) scale(.96); filter: blur(3px) brightness(.8); }
 .lk-stage .phone::after { content: ""; position: absolute; inset: 1.1%; border-radius: 12.4% / 5.6%; pointer-events: none; background: radial-gradient(240px circle at var(--gx, 30%) var(--gy, 0%), rgba(255,255,255,.17), transparent 70%); opacity: var(--go, 0); transition: opacity .3s; }
 @media (prefers-reduced-motion: no-preference) { .look li { animation: pill .5s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: calc(var(--i, 0) * 45ms); } @keyframes pill { from { opacity: 0; transform: translateX(-14px); } } }
-@media (max-width: 760px) {
+@media (min-width: 0px) {
   .look { --pw: calc((var(--lkh) - 172px) * .46); }
   .look li { animation: none; }
   .lk-head { flex: none; height: 48px; margin: 16px 14px 14px; display: flex; align-items: center; justify-content: center; text-align: center; transition: opacity .18s, transform .18s; }
@@ -295,7 +297,7 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
    stands on the page itself with only its colour behind it, and the pages at the sides turn away like covers on a shelf.
    ❌ the band with a line above and below (his own ask an hour earlier) · ❌ 1 Open (word tabs) · ❌ 2 Spotlight · ❌ 3 Soft
    band — all four still in website/versions/lk2/. One move back: delete this block. */
-@media (max-width: 760px) {
+@media (min-width: 0px) {
   .look { border: 0; background: radial-gradient(90% 48% at 50% 60%, var(--tint), transparent 74%); }
   .lk-card { transform: perspective(820px) rotateY(calc(var(--d, 0) * -44deg)) scale(calc(.82 + .18 * var(--k, 0))); opacity: calc(.5 + .5 * var(--k, 0)); }
 }
@@ -321,7 +323,7 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .ch-art { position: relative; display: grid; justify-items: center; }
 .ch-txt { transition: opacity .8s, translate .8s cubic-bezier(.2,.7,.2,1); }
 .fx .ch:not(.go) .ch-txt { opacity: 0; translate: 0 22px; }
-@media (min-width: 761px) { .ch { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 84px 24px; } .ch.c { text-align: left; } .ch.c p { margin-left: 0; } .ch.flip .ch-txt { order: 2; }
+@media (min-width: 100000px) { /* was: the chapters side by side on a computer */ .ch { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 84px 24px; } .ch.c { text-align: left; } .ch.c p { margin-left: 0; } .ch.flip .ch-txt { order: 2; }
   .ch h3 { font-size: 52px; } .ch p { font-size: 20px; } .ch::before { inset: 0; background: radial-gradient(38% 52% at var(--gx, 75%) 52%, var(--g), transparent 74%); } .ch.flip { --gx: 25%; } }
 
 /* 1 · the night — the dial draws itself: a tap at bedtime, the night sweeps round, a tap at the wake-up */
@@ -343,7 +345,7 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .motto .us { display: inline-flex; align-items: center; gap: 8px; font: 500 15px Poppins, system-ui, sans-serif; letter-spacing: 0; color: #efdcaf; padding: 8px 17px 8px 13px; border-radius: 99px; background: linear-gradient(180deg, rgba(217,187,124,.14), rgba(217,187,124,.05)); box-shadow: inset 0 0 0 1px rgba(217,187,124,.45), 0 10px 30px -12px rgba(217,187,124,.35); }
 .motto .us svg { width: 15px; height: 15px; fill: #e2c27f; flex: none; }
 .motto .where { font: 500 13px Inter, system-ui, sans-serif; color: var(--soft); }
-@media (max-width: 760px) { .hero .eyebrow.motto { display: flex; margin-bottom: 4px; } .motto .where { display: none; } .motto .us { font-size: 14px; } }
+@media (min-width: 0px) { .hero .eyebrow.motto { display: flex; margin-bottom: 4px; } .motto .where { display: none; } .motto .us { font-size: 14px; } }
 
 /* 1 · one tap, even half asleep — three in the morning, no signal; a tap on Bottle and it is saved */
 .ql { width: min(100%, 340px); display: grid; justify-items: center; }
@@ -484,6 +486,20 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fc .crow b { font: 600 12px Inter, system-ui, sans-serif; flex: 1; } .fc .crow small { font-size: 10px; } .fc .crow .dot { width: 8px; height: 8px; box-shadow: none; }
 .fx .ch:not(.go) .fc .ln { stroke-dashoffset: 1; } .fx .ch:not(.go) .fc .crow { opacity: 0; translate: 0 8px; } .fx .ch:not(.go) .fc .pp { scale: .8; }
 
+</style>
+<style>
+/* LAB e7 — a computer reads the phone's page, larger (Petru, 2026-11-14: "make it similar to the phone version") */
+@media (min-width: 761px) {
+  .hero { padding-top: 72px !important; } .hero .lead.short { font-size: 22px; margin-bottom: 30px; }
+  .sky { height: 620px; max-width: 900px; } .fx .sky { --spread: -18px; }
+  main .wrap { max-width: 808px; } /* one centred column, the phone's, wider */
+  .ch { max-width: 808px; padding: 64px 24px; gap: 34px; } .ch h3 { font-size: 46px; } .ch p { font-size: 20px; max-width: 26em; }
+  .ch::before { inset: 18% -20% 0; background: radial-gradient(60% 50% at 50% 62%, var(--g), transparent 74%); }
+  .pdial, .dial { width: min(100%, 340px); } .pr, .gl, .ql { width: min(100%, 420px); } .foods { max-width: 480px; } .chart { width: min(100%, 420px); }
+  .fc { scale: 1.15; margin: 24px auto; }
+  .look { --lkh: clamp(560px, calc(100svh - 96px), 720px); margin-left: 0; margin-right: 0; }
+  .lk-groups { max-width: 420px; margin: 12px auto 0; width: 100%; }
+}
 </style>
 </head>
 <body>
