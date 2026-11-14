@@ -55,7 +55,7 @@ header .btn { padding: 8px 16px; font-size: 13px; }
 .langs { display: flex; gap: 12px; font: 500 12px Inter; letter-spacing: .08em; color: var(--soft); } .langs [aria-current] { color: var(--ink); } .langs a:hover { color: var(--ink); }
 .hero { text-align: center; padding: 84px 0 0; }
 .eyebrow { font: 500 14px Inter; color: var(--soft); letter-spacing: .01em; }
-.hero h1 { font-weight: 700; font-size: clamp(44px, 8.6vw, 104px); margin: 14px auto 20px; max-width: 11em; }
+.hero h1 { font-weight: 700; font-size: clamp(44px, 8.6vw, 104px); margin: 14px auto calc(20px - .18em); padding-bottom: .18em; max-width: 11em; }   /* the padding gives the g and y of the last line room: the headline is painted through its letters (the light passing once), and paint stops at the box, which ended at the baseline and cut their tails (Petru, 2026-11-14: "the g is cut") */
 .hero p.lead { font-size: clamp(18px, 2.1vw, 22px); color: var(--soft); max-width: 34em; margin: 0 auto 28px; }
 .hero .lead.short { display: none; }
 .cta { display: flex; gap: 22px; justify-content: center; align-items: center; flex-wrap: wrap; }
