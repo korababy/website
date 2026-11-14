@@ -198,7 +198,7 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
    catches a sheen; the highlights have dots on a phone; the story has its name; the page closes on a band with the
    headline and the button; a pressed button gives. All of it stands still for a reader who asked for reduced motion.
    One move back: delete this block, the .close section and the script's "enhanced" lines. */
-.sky::before { content: ""; position: absolute; inset: 6% -10% -6%; z-index: 0; pointer-events: none; filter: blur(30px);
+.sky::before { content: ""; position: absolute; inset: 6% -10% -6%; z-index: 0; pointer-events: none;
   background: radial-gradient(34% 44% at 50% 62%, rgba(120,150,230,.46), transparent 70%), radial-gradient(26% 36% at 26% 70%, rgba(170,130,255,.28), transparent 70%), radial-gradient(26% 36% at 76% 68%, rgba(217,187,124,.28), transparent 70%); }
 .sky .phone { z-index: 1; } .sky .p1 { z-index: 2; }
 .btn:active { transform: scale(.97); }
@@ -238,7 +238,7 @@ footer { margin-top: 0; } footer b { display: inline-flex; align-items: center; 
    the K at the foot breathes · a spotlight that follows the pointer on a computer. Everything needs the script (html.fx)
    and stands still under reduced motion. One move back: delete this block, the .ticker line and the script's "effects" block. */
 @property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
-header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: calc(var(--prog) * 100%); background: linear-gradient(90deg, #f3dfb4, #b58a3c); pointer-events: none; }
+header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; transform: scaleX(var(--prog)); transform-origin: 0 50%; will-change: transform; background: linear-gradient(90deg, #f3dfb4, #b58a3c); pointer-events: none; }
 .hero { position: relative; } .hero > .wrap { position: relative; z-index: 1; }
 .stars { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .stars i { position: absolute; width: var(--z, 2px); height: var(--z, 2px); border-radius: 50%; background: #fff; opacity: .3; }
@@ -250,10 +250,11 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .first::before { content: ""; position: absolute; inset: 0; padding: 2px; border-radius: inherit; pointer-events: none; background: conic-gradient(from var(--a), rgba(255,255,255,.95), rgba(138,106,42,.9) 25%, rgba(255,255,255,.95) 50%, rgba(138,106,42,.9) 75%, rgba(255,255,255,.95)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
 @media (hover: hover) { .tile::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.10), transparent 70%); } .tile:hover::after { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) {
-  .stars i { animation: twinkle var(--d, 4s) var(--l, 0s) ease-in-out infinite; }
-  @keyframes twinkle { 0%, 100% { opacity: .08; transform: scale(.8); } 50% { opacity: .85; transform: scale(1.15); } }
-  .hero h1 { background: linear-gradient(100deg, #f4f5f7 42%, #ffffff 48%, #b9cbff 50%, #f4f5f7 58%) 120% 0 / 260% 100% no-repeat, #f4f5f7; -webkit-background-clip: text; background-clip: text; color: transparent; animation: head .9s cubic-bezier(.2,.7,.2,1) backwards, shine 7s 1.6s ease-in-out infinite; }
-  @keyframes shine { 0% { background-position: 120% 0, 0 0; } 45%, 100% { background-position: -40% 0, 0 0; } }
+  .stars i.t { animation: twinkle var(--d, 4s) var(--l, 0s) ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: .1; } 50% { opacity: .9; } }
+  .hero h1 { background: linear-gradient(100deg, #f4f5f7 42%, #ffffff 48%, #b9cbff 50%, #f4f5f7 58%) 120% 0 / 260% 100% no-repeat, #f4f5f7; -webkit-background-clip: text; background-clip: text; color: transparent; animation: head .9s cubic-bezier(.2,.7,.2,1) backwards, shine 3s 1.6s ease-in-out 1 both; }
+  @keyframes shine { from { background-position: 120% 0, 0 0; } to { background-position: -40% 0, 0 0; } }
+  .fx .sky .phone { will-change: transform, translate, rotate, scale; }
   .fx .sky .p1 { translate: 0 calc(var(--s, 0) * -22px); scale: calc(1 + var(--s, 0) * .05); }
   .fx .sky .p0 { translate: calc(var(--s, 0) * var(--spread, -26px)) calc(var(--s, 0) * 12px); rotate: calc(var(--s, 0) * -5deg); }
   .fx .sky .p2 { translate: calc(var(--s, 0) * -1 * var(--spread, -26px)) calc(var(--s, 0) * 12px); rotate: calc(var(--s, 0) * 5deg); }
@@ -284,6 +285,11 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
   .lk-card { flex: 0 0 calc(var(--pw) + 22px); padding: 0; scroll-snap-stop: normal; transform: scale(calc(.8 + .2 * var(--k, 0))); opacity: calc(.38 + .62 * var(--k, 0)); transform-origin: 50% 44%; will-change: transform; }
   .lk-card .phone { box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2), 0 0 calc(60px * var(--k, 0)) rgba(255,255,255,.10); }
 }
+/* On a phone the top bar is solid, not frosted glass (2026-11-14, after his screen recording of the live page: 21 of
+   325 moving frames froze while he scrolled the first screen). Frosted glass blurs whatever passes under the bar again
+   on every frame — the three phones and the stars; on this dark page a solid bar looks the same. A computer keeps the glass.
+   One move back: delete this rule. */
+@media (max-width: 760px) { header { background: rgba(10,11,14,.94); backdrop-filter: none; -webkit-backdrop-filter: none; } }
 /* ⚖ THE CLOSER LOOK ON A PHONE IS THE ARC, WITH NO BAND — Petru, 2026-11-14 02:25, holding the lab (lk2): "arc"
    (after "I don't think I like anymore the container thing, the segregation thing … I like the carousel"). The carousel
    stands on the page itself with only its colour behind it, and the pages at the sides turn away like covers on a shelf.
@@ -430,13 +436,17 @@ document.querySelectorAll('.rail img').forEach((i) => { i.loading = 'lazy'; i.de
 (function () { const root = document.documentElement; root.classList.add('fx');
   const rnd = (function (a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; })(20261114);
   const sky = (host, n, maxTop) => { if (!host) return; const d = document.createElement('div'); d.className = 'stars'; let h = '';
-    for (let k = 0; k < n; k++) h += '<i style="left:' + (rnd() * 100).toFixed(1) + '%;top:' + (rnd() * maxTop).toFixed(1) + '%;--z:' + (rnd() < .22 ? 3 : rnd() < .5 ? 2 : 1) + 'px;--d:' + (3 + rnd() * 5).toFixed(1) + 's;--l:-' + (rnd() * 8).toFixed(1) + 's"></i>';
+    for (let k = 0; k < n; k++) h += '<i' + (k % 3 ? '' : ' class="t"') + ' style="left:' + (rnd() * 100).toFixed(1) + '%;top:' + (rnd() * maxTop).toFixed(1) + '%;--z:' + (rnd() < .22 ? 3 : rnd() < .5 ? 2 : 1) + 'px;--d:' + (3 + rnd() * 5).toFixed(1) + 's;--l:-' + (rnd() * 8).toFixed(1) + 's"></i>';
     d.innerHTML = h; host.prepend(d); };
   sky(document.querySelector('.hero'), 46, 62); sky(document.querySelector('.close .wrap'), 30, 100);
   const tr = document.getElementById('ticker'); if (tr) tr.innerHTML += tr.innerHTML;
   const head = document.querySelector('header'), stage = document.querySelector('.sky'); let wait = false;
+  // ⚖ SMOOTH (Petru, 2026-11-14 02:50, on his phone: "I like that animation, but it's a bit freezing. It's not that smooth"): the phones no longer jump to
+  // where each scroll step says — they glide there, a little every frame (a scroll step only sets where to go).
+  let goal = 0, now = 0, gliding = false;
+  const glide = () => { now += (goal - now) * .16; if (Math.abs(goal - now) < .0015) now = goal; stage.style.setProperty('--s', now.toFixed(4)); if (now !== goal) requestAnimationFrame(glide); else gliding = false; };
   const onScroll = () => { wait = false; const max = document.documentElement.scrollHeight - innerHeight; head.style.setProperty('--prog', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0);
-    if (stage) { const r = stage.getBoundingClientRect(); stage.style.setProperty('--s', Math.max(0, Math.min(1, (innerHeight * .9 - r.top) / (innerHeight * .9))).toFixed(3)); } };
+    if (stage) { const r = stage.getBoundingClientRect(); if (r.bottom > -200 && r.top < innerHeight + 200) { goal = Math.max(0, Math.min(1, (innerHeight * .9 - r.top) / (innerHeight * .9))); if (!gliding && goal !== now) { gliding = true; requestAnimationFrame(glide); } } } };
   addEventListener('scroll', () => { if (!wait) { wait = true; requestAnimationFrame(onScroll); } }, { passive: true }); onScroll();
   // a highlight's phone slides in once its card is on screen — and a card already passed never keeps its phone hidden
   const cards = Array.from(document.querySelectorAll('.hl'));
