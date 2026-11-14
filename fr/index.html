@@ -11,6 +11,15 @@
 <link rel="alternate" hreflang="fr" href="../fr/">
 <link rel="icon" href="../img/icon.png">
 <meta name="theme-color" content="#0a0b0e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kora Baby">
+<meta property="og:title" content="Kora Baby — La journée de ton bébé, ensemble">
+<meta property="og:description" content="Sommeil, tétées et biberons, couches, repas, étapes et les notes de la famille dans un seul journal partagé. Kora Baby, pour iPhone.">
+<meta property="og:image" content="https://korababy.app/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="../img/icon.png">
 <!-- THE PUBLISHED FRONT PAGE since 2026-11-14 (Petru, 13 Nov 23:58: "Yes, I like this. Let's publish it. So the dark on graphite") — scripts/build_website_site.js builds korababy.app from this file and e4/i18n.json. ⏪ One move back: the website project's previous commit, and FRONT back to 'd' in the build.
      VERSION E4 — the WHOLE page dark, on his graphite screenshots of 13 Nov 23:45 (his "when I say mock, I want the full website, not just the closer look"): E3's layout, every colour turned for a dark page, the first-20 banner in ivory and gold. E3, E2 and E stay beside it.
      VERSION E3 — E2 with the closer look on a dark stage, in three groups, with his 22 dark screenshots of 13 Nov 23:23 (every log type, the report, reminders, the sleep forecast); the first screen and the highlights keep the light ones. E2 stays in ../e2/.
@@ -184,6 +193,112 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   .cmp .pr small { display: block; font: 400 13px/1.4 Inter; margin-top: 4px; } .cmp .note { font-size: 13px; line-height: 1.4; margin-top: 4px; text-wrap: balance; }
   .lk-dots { flex: none; display: flex; justify-content: center; align-items: center; gap: 7px; padding: 12px 0 14px; } .lk-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .lk-dots i.on { background: #fff; width: 22px; }
 }
+/* ── ENHANCED (Petru, 2026-11-14 01:35: "I meant also enhance the website itself"). Motion and light, no new sentence:
+   the three phones rise and fan out when the page opens, over a slow light; the numbers count up; the gold banner
+   catches a sheen; the highlights have dots on a phone; the story has its name; the page closes on a band with the
+   headline and the button; a pressed button gives. All of it stands still for a reader who asked for reduced motion.
+   One move back: delete this block, the .close section and the script's "enhanced" lines. */
+.sky::before { content: ""; position: absolute; inset: 6% -10% -6%; z-index: 0; pointer-events: none; filter: blur(30px);
+  background: radial-gradient(34% 44% at 50% 62%, rgba(120,150,230,.46), transparent 70%), radial-gradient(26% 36% at 26% 70%, rgba(170,130,255,.28), transparent 70%), radial-gradient(26% 36% at 76% 68%, rgba(217,187,124,.28), transparent 70%); }
+.sky .phone { z-index: 1; } .sky .p1 { z-index: 2; }
+.btn:active { transform: scale(.97); }
+.tile, .hl { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+@media (hover: hover) { .tile:hover { transform: translateY(-4px); } }
+.first { position: relative; overflow: hidden; }
+.first::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.7) 50%, transparent 62%); transform: translateX(-110%); }
+.first.in::after { animation: sheen 1.6s .5s cubic-bezier(.3,.6,.3,1) forwards; }
+@keyframes sheen { to { transform: translateX(110%); } }
+.hl-dots { display: none; }
+.story .eyebrow { margin-bottom: 22px; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; }
+.story .eyebrow::before { content: ""; display: block; width: 36px; height: 2px; margin: 0 auto 22px; border-radius: 2px; background: linear-gradient(90deg, #f3dfb4, #b58a3c); }
+.close { padding-top: 120px; text-align: center; position: relative; }
+.close .wrap { max-width: none; padding: 96px 24px 104px; border-top: 1px solid var(--edge); background: radial-gradient(60% 120% at 50% 118%, rgba(120,150,230,.30), transparent 70%), radial-gradient(40% 90% at 22% 120%, rgba(170,130,255,.16), transparent 70%), radial-gradient(40% 90% at 78% 120%, rgba(217,187,124,.16), transparent 70%); }
+.close .k { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 20px 50px -16px rgba(0,0,0,.9); }
+.close h2 { font-weight: 700; font-size: clamp(36px, 6.4vw, 76px); margin: 26px auto 14px; max-width: 11em; }
+.close p { color: var(--soft); font-size: clamp(17px, 2vw, 20px); margin-bottom: 30px; }
+footer { margin-top: 0; } footer b { display: inline-flex; align-items: center; gap: 8px; } footer b img { width: 22px; height: 22px; border-radius: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .sky::before { animation: drift 16s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translate3d(-3%, 0, 0) scale(1); } to { transform: translate3d(3%, -3%, 0) scale(1.08); } }
+  .sky .p1 { animation: rise 1s .15s cubic-bezier(.2,.7,.2,1) backwards; }
+  .sky .p0, .sky .p2 { animation: fan 1.1s .45s cubic-bezier(.2,.7,.2,1) backwards; }
+  @keyframes rise { from { opacity: 0; transform: translateX(-50%) translateY(46px) scale(.95); } }
+  @keyframes fan { from { opacity: 0; transform: translateX(-50%) translateY(30px) rotate(0deg) scale(.94); } }
+  .hero h1 { animation: head .9s cubic-bezier(.2,.7,.2,1) backwards; }
+  @keyframes head { from { opacity: 0; transform: translateY(18px); } }
+}
+@media (max-width: 760px) {
+  .hl-dots { display: flex; justify-content: center; gap: 7px; padding-top: 14px; } .hl-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .hl-dots i.on { background: #fff; width: 22px; }
+  .close { padding-top: 84px; } .close .wrap { padding: 72px 24px 80px; }
+}
+/* ── EFFECTS (Petru, 2026-11-14 01:45: "add some cool elements, maybe some kind of animation, maybe some kind of effects"):
+   a night sky of slow stars behind the first screen and the closing band · a light that passes over the headline · the
+   three phones open a little as you scroll · a ribbon of the twelve logs that drifts by · a gold line under the bar that
+   grows as you read · each highlight's phone slides up into its card · a gold light that runs round the first-20 banner ·
+   the K at the foot breathes · a spotlight that follows the pointer on a computer. Everything needs the script (html.fx)
+   and stands still under reduced motion. One move back: delete this block, the .ticker line and the script's "effects" block. */
+@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: calc(var(--prog) * 100%); background: linear-gradient(90deg, #f3dfb4, #b58a3c); pointer-events: none; }
+.hero { position: relative; } .hero > .wrap { position: relative; z-index: 1; }
+.stars { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.stars i { position: absolute; width: var(--z, 2px); height: var(--z, 2px); border-radius: 50%; background: #fff; opacity: .3; }
+.close .wrap { position: relative; overflow: hidden; } .close .wrap > :not(.stars) { position: relative; z-index: 1; }
+.ticker { margin-top: 64px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.ticker .track { display: flex; gap: 10px; width: max-content; }
+.ticker span { display: inline-flex; align-items: center; gap: 9px; font: 500 15px Inter; color: var(--ink); padding: 10px 18px 10px 14px; border-radius: 99px; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px var(--edge); white-space: nowrap; }
+.ticker span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
+.first::before { content: ""; position: absolute; inset: 0; padding: 2px; border-radius: inherit; pointer-events: none; background: conic-gradient(from var(--a), rgba(255,255,255,.95), rgba(138,106,42,.9) 25%, rgba(255,255,255,.95) 50%, rgba(138,106,42,.9) 75%, rgba(255,255,255,.95)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+@media (hover: hover) { .tile::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.10), transparent 70%); } .tile:hover::after { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .stars i { animation: twinkle var(--d, 4s) var(--l, 0s) ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: .08; transform: scale(.8); } 50% { opacity: .85; transform: scale(1.15); } }
+  .hero h1 { background: linear-gradient(100deg, #f4f5f7 42%, #ffffff 48%, #b9cbff 50%, #f4f5f7 58%) 120% 0 / 260% 100% no-repeat, #f4f5f7; -webkit-background-clip: text; background-clip: text; color: transparent; animation: head .9s cubic-bezier(.2,.7,.2,1) backwards, shine 7s 1.6s ease-in-out infinite; }
+  @keyframes shine { 0% { background-position: 120% 0, 0 0; } 45%, 100% { background-position: -40% 0, 0 0; } }
+  .fx .sky .p1 { translate: 0 calc(var(--s, 0) * -22px); scale: calc(1 + var(--s, 0) * .05); }
+  .fx .sky .p0 { translate: calc(var(--s, 0) * var(--spread, -26px)) calc(var(--s, 0) * 12px); rotate: calc(var(--s, 0) * -5deg); }
+  .fx .sky .p2 { translate: calc(var(--s, 0) * -1 * var(--spread, -26px)) calc(var(--s, 0) * 12px); rotate: calc(var(--s, 0) * 5deg); }
+  .ticker .track { animation: drift-x 46s linear infinite; }
+  @keyframes drift-x { to { transform: translateX(-50%); } }
+  .fx .hl .phone { translate: 0 44px; opacity: 0; transition: translate 1s cubic-bezier(.2,.7,.2,1), opacity 1s; } .fx .hl.seen .phone { translate: 0 0; opacity: 1; }
+  .first::before { animation: turn 7s linear infinite; }
+  @keyframes turn { to { --a: 360deg; } }
+  .close .k { animation: breathe 5s ease-in-out infinite; }
+  @keyframes breathe { 0%, 100% { transform: translateY(0); box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 20px 50px -16px rgba(0,0,0,.9), 0 0 0 rgba(120,150,230,0); } 50% { transform: translateY(-8px); box-shadow: 0 0 0 1px rgba(255,255,255,.22), 0 30px 60px -16px rgba(0,0,0,.9), 0 0 60px rgba(120,150,230,.45); } }
+}
+@media (max-width: 760px) { .ticker { margin-top: 40px; } .fx .sky { --spread: -8px; } }
+/* ── THE CLOSER LOOK, ENHANCED (Petru, 2026-11-14 01:55: "Enhance also the take a closer look"). Phone: a carousel —
+   the page in the middle whole and bright, its neighbours smaller and dim at the sides, one headline above that changes
+   with it, a tap on a neighbour brings it in; still one screen high, still swiped. Computer: the phone turns as it
+   changes, tilts under the pointer with a light on its glass, and the pills arrive one after another.
+   One move back: delete this block and take lkMobile, show() and group() back from the commit before. */
+.lk-stage .phone { transform: translateX(-50%) perspective(1100px) rotateY(calc(var(--ry, 0) * 1deg)) rotateX(calc(var(--rx, 0) * 1deg)); transition: transform .35s cubic-bezier(.2,.7,.2,1), filter .3s; }
+.lk-stage .phone.swap { transform: translateX(-50%) perspective(1100px) rotateY(-16deg) translateY(16px) scale(.96); filter: blur(3px) brightness(.8); }
+.lk-stage .phone::after { content: ""; position: absolute; inset: 1.1%; border-radius: 12.4% / 5.6%; pointer-events: none; background: radial-gradient(240px circle at var(--gx, 30%) var(--gy, 0%), rgba(255,255,255,.17), transparent 70%); opacity: var(--go, 0); transition: opacity .3s; }
+@media (prefers-reduced-motion: no-preference) { .look li { animation: pill .5s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: calc(var(--i, 0) * 45ms); } @keyframes pill { from { opacity: 0; transform: translateX(-14px); } } }
+@media (max-width: 760px) {
+  .look { --pw: calc((var(--lkh) - 172px) * .46); }
+  .look li { animation: none; }
+  .lk-head { flex: none; height: 48px; margin: 16px 14px 14px; display: flex; align-items: center; justify-content: center; text-align: center; transition: opacity .18s, transform .18s; }
+  .lk-head b { font: 600 20px/1.2 Poppins; letter-spacing: -.02em; color: #fff; } .lk-head.out { opacity: 0; transform: translateY(6px); }
+  .lk-rail { padding: 0 calc(50% - (var(--pw) + 22px) / 2); }
+  .lk-card { flex: 0 0 calc(var(--pw) + 22px); padding: 0; scroll-snap-stop: normal; transform: scale(calc(.8 + .2 * var(--k, 0))); opacity: calc(.38 + .62 * var(--k, 0)); transform-origin: 50% 44%; will-change: transform; }
+  .lk-card .phone { box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2), 0 0 calc(60px * var(--k, 0)) rgba(255,255,255,.10); }
+}
+/* ⚖ THE CLOSER LOOK ON A PHONE IS THE ARC, WITH NO BAND — Petru, 2026-11-14 02:25, holding the lab (lk2): "arc"
+   (after "I don't think I like anymore the container thing, the segregation thing … I like the carousel"). The carousel
+   stands on the page itself with only its colour behind it, and the pages at the sides turn away like covers on a shelf.
+   ❌ the band with a line above and below (his own ask an hour earlier) · ❌ 1 Open (word tabs) · ❌ 2 Spotlight · ❌ 3 Soft
+   band — all four still in website/versions/lk2/. One move back: delete this block. */
+@media (max-width: 760px) {
+  .look { border: 0; background: radial-gradient(90% 48% at 50% 60%, var(--tint), transparent 74%); }
+  .lk-card { transform: perspective(820px) rotateY(calc(var(--d, 0) * -44deg)) scale(calc(.82 + .18 * var(--k, 0))); opacity: calc(.5 + .5 * var(--k, 0)); }
+}
+/* ── FROM APPLE: the story LIGHTS UP as you read (Petru, same message: "story lights up i want to see") — every word
+   starts dim and turns white as the paragraph passes up the screen, as the big statements on apple.com do. Needs the
+   script (it wraps the words); without it the paragraph reads as before. One move back: delete this block and the
+   script's "story lights up" block. */
+.story.lights p, .story.lights p span { color: rgba(244,245,247,.2); }
+.story.lights .w { transition: color .35s; } .story.lights .w.lit { color: #f4f5f7; }
 </style>
 </head>
 <body>
@@ -211,6 +326,10 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
     <div class="phone p2"><img src="../shots/insights.jpg" alt="La page Analyses de Kora Baby"></div>
   </div>
 </section>
+
+<div class="ticker" aria-hidden="true"><div class="track" id="ticker">
+  <span style="--c:#f2c230">Tétée</span><span style="--c:#f07a3a">Biberon</span><span style="--c:#ef4d3a">Diversification</span><span style="--c:#e8508a">Tire-lait</span><span style="--c:#58a6e8">Sommeil</span><span style="--c:#a15cf0">Couche</span><span style="--c:#c9a87a">Croissance</span><span style="--c:#e08a4a">Notes</span><span style="--c:#3fc7b0">Santé</span><span style="--c:#e6c84a">Étapes</span><span style="--c:#5fd08a">Activités</span><span style="--c:#7fa7c9">Courses</span>
+</div></div>
 
 <section id="highlights">
   <div class="wrap"><h2 class="h2" data-r>L’essentiel.</h2></div>
@@ -272,12 +391,19 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
 </div></section>
 
 <section class="story" id="story"><div class="wrap" data-r>
+  <div class="eyebrow">Notre histoire</div>
   <p>Nous sommes maman et papa. Kora Baby est née comme une application pour notre famille. <span>Nous voulions garder les petits détails de la journée de notre bébé au même endroit, pour les suivre ensemble avec les personnes qui s’en occupent.</span></p>
-  <div class="cta" style="margin-top:36px"><a class="btn" href="../join/index.html?lang=fr">Rejoins la liste d’attente</a></div>
+</div></section>
+
+<section class="close" id="join"><div class="wrap" data-r>
+  <img class="k" src="../img/icon.png" alt="">
+  <h2>La journée de ton bébé. Ensemble.</h2>
+  <p>Un seul journal que toute la famille partage.</p>
+  <a class="btn" href="../join/index.html?lang=fr">Rejoins la liste d’attente</a>
 </div></section>
 </main>
 <footer><div class="wrap">
-  <div class="r"><b>Kora Baby</b><a href="mailto:support@korababy.app">support@korababy.app</a><a href="support.html">Assistance</a><a href="privacy.html">Vie privée</a><a href="terms.html">Conditions</a></div>
+  <div class="r"><b><img src="../img/icon.png" alt="">Kora Baby</b><a href="mailto:support@korababy.app">support@korababy.app</a><a href="support.html">Assistance</a><a href="privacy.html">Vie privée</a><a href="terms.html">Conditions</a></div>
   <p>Kora Baby enregistre ce que tu saisis. Elle ne fournit pas de conseils médicaux. Les illustrations des aliments et les informations générales ne remplacent ni la surveillance ni les conseils professionnels.</p>
 </div></footer>
 <script>
@@ -285,6 +411,44 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   const set = (open) => { h.classList.toggle('open', open); b.setAttribute('aria-expanded', open); };
   b.addEventListener('click', () => set(!h.classList.contains('open')));
   document.querySelectorAll('#menu a').forEach((a) => a.addEventListener('click', () => set(false))); })();
+// enhanced: the big numbers count up once, when they come into view (and stand still for reduced motion)
+(function () { if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const nums = document.querySelectorAll('.tile .num, .first .n');
+  const o = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; o.unobserve(e.target);
+    const el = e.target, to = parseInt(el.textContent, 10); if (!to) return; const t0 = performance.now(), ms = 900;
+    const tick = (t) => { const k = Math.min(1, (t - t0) / ms); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+    el.textContent = '0'; requestAnimationFrame(tick); }), { threshold: .6 });
+  nums.forEach((n) => o.observe(n)); })();
+// enhanced: on a phone the highlights show where you are, as the closer look does
+(function () { const rail = document.querySelector('.rail'); if (!rail) return; const cards = rail.children;
+  const dots = document.createElement('div'); dots.className = 'hl-dots'; dots.innerHTML = Array.from(cards, () => '<i></i>').join(''); rail.after(dots);
+  const mark = () => { const mid = rail.scrollLeft + rail.clientWidth / 2; let n = 0, best = 1e9; Array.from(cards).forEach((c, k) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < best) { best = d; n = k; } });
+    dots.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === n)); };
+  rail.addEventListener('scroll', mark, { passive: true }); mark(); })();
+document.querySelectorAll('.rail img').forEach((i) => { i.loading = 'lazy'; i.decoding = 'async'; });
+// effects (2026-11-14): stars, the ribbon, the gold line under the bar, the phones that open as you scroll, the highlights' phones, the pointer's spotlight
+(function () { const root = document.documentElement; root.classList.add('fx');
+  const rnd = (function (a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; })(20261114);
+  const sky = (host, n, maxTop) => { if (!host) return; const d = document.createElement('div'); d.className = 'stars'; let h = '';
+    for (let k = 0; k < n; k++) h += '<i style="left:' + (rnd() * 100).toFixed(1) + '%;top:' + (rnd() * maxTop).toFixed(1) + '%;--z:' + (rnd() < .22 ? 3 : rnd() < .5 ? 2 : 1) + 'px;--d:' + (3 + rnd() * 5).toFixed(1) + 's;--l:-' + (rnd() * 8).toFixed(1) + 's"></i>';
+    d.innerHTML = h; host.prepend(d); };
+  sky(document.querySelector('.hero'), 46, 62); sky(document.querySelector('.close .wrap'), 30, 100);
+  const tr = document.getElementById('ticker'); if (tr) tr.innerHTML += tr.innerHTML;
+  const head = document.querySelector('header'), stage = document.querySelector('.sky'); let wait = false;
+  const onScroll = () => { wait = false; const max = document.documentElement.scrollHeight - innerHeight; head.style.setProperty('--prog', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0);
+    if (stage) { const r = stage.getBoundingClientRect(); stage.style.setProperty('--s', Math.max(0, Math.min(1, (innerHeight * .9 - r.top) / (innerHeight * .9))).toFixed(3)); } };
+  addEventListener('scroll', () => { if (!wait) { wait = true; requestAnimationFrame(onScroll); } }, { passive: true }); onScroll();
+  // a highlight's phone slides in once its card is on screen — and a card already passed never keeps its phone hidden
+  const cards = Array.from(document.querySelectorAll('.hl'));
+  const see = () => cards.forEach((c) => { if (c.classList.contains('seen')) return; const r = c.getBoundingClientRect(); if (r.top < innerHeight * .82 && r.left < innerWidth * .8) c.classList.add('seen'); });
+  addEventListener('scroll', see, { passive: true }); const hlRail = document.querySelector('.rail'); if (hlRail) hlRail.addEventListener('scroll', see, { passive: true }); see();
+  if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.tile').forEach((t) => t.addEventListener('pointermove', (e) => { const r = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px'); })); })();
+// from Apple (2026-11-14): the story lights up word by word as it passes up the screen
+(function () { const sec = document.querySelector('.story'), p = sec && sec.querySelector('p'); if (!p) return;
+  const wrap = (node) => { Array.from(node.childNodes).forEach((n) => { if (n.nodeType === 3) { const f = document.createDocumentFragment(); n.textContent.split(/(\s+)/).forEach((t) => { if (!t) return; if (/^\s+$/.test(t)) f.appendChild(document.createTextNode(t)); else { const w = document.createElement('span'); w.className = 'w'; w.textContent = t; f.appendChild(w); } }); node.replaceChild(f, n); } else if (n.nodeType === 1) wrap(n); }); };
+  wrap(p); sec.classList.add('lights'); const words = Array.from(p.querySelectorAll('.w')); let lit = -1;
+  const light = () => { const r = p.getBoundingClientRect(), vh = innerHeight; const k = Math.max(0, Math.min(1, (vh * .86 - r.top) / (r.height + vh * .36))); const n = Math.round(k * words.length); if (n === lit) return; lit = n; words.forEach((w, i) => w.classList.toggle('lit', i < n)); };
+  addEventListener('scroll', light, { passive: true }); addEventListener('resize', light); light(); })();
 const T = ['par an', 'par mois', 'CHF 9.45 de moins que douze mois', 'ou CHF 49.95 par an'];
 const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('[data-r]').forEach((e) => io.observe(e));
@@ -295,13 +459,21 @@ document.querySelectorAll('[data-bill]').forEach((b) => b.addEventListener('clic
   document.querySelector('[data-per]').textContent = y ? T[0] : T[1];
   document.querySelector('[data-note]').textContent = y ? T[2] : T[3];
 }));
-function lkMobile(items, box) {   // the closer look on a phone: one page at a time, swiped (his "A", 2026-11-14)
+function lkMobile(items, box) {   // the closer look on a phone: his "A" (swiped, one screen high), ENHANCED 2026-11-14 01:55 — the page in the middle stands whole, its neighbours peek smaller at the sides, the headline above changes with it, a tap on a neighbour brings it in
   let m = box.querySelector('.lk-m'); if (!m) { m = document.createElement('div'); m.className = 'lk-m'; box.appendChild(m); }
-  m.innerHTML = '<div class="lk-rail">' + items.map((x) => '<article class="lk-card"><b>' + x[3] + '</b><p>' + x[4] + '</p><div class="phone"><img loading="lazy" data-s="' + x[1] + '" alt="' + x[0] + '"></div></article>').join('') + '</div><div class="lk-dots">' + items.map(() => '<i></i>').join('') + '</div>';
+  m.innerHTML = '<div class="lk-head"><b></b></div><div class="lk-rail">' + items.map((x) => '<article class="lk-card"><div class="phone"><img loading="lazy" data-s="' + x[1] + '" alt="' + x[0] + '"></div></article>').join('') + '</div><div class="lk-dots">' + items.map(() => '<i></i>').join('') + '</div>';
   m.querySelectorAll('img').forEach((i) => { i.src = '../shots/' + i.dataset.s + '.jpg'; });
-  const rail = m.querySelector('.lk-rail'), dots = m.querySelectorAll('.lk-dots i');
-  const mark = () => { const n = Math.max(0, Math.min(items.length - 1, Math.round(rail.scrollLeft / Math.max(1, rail.clientWidth)))); dots.forEach((d, k) => d.classList.toggle('on', k === n)); if (rail.clientWidth) box.style.setProperty('--tint', items[n][2]); };
-  rail.addEventListener('scroll', mark, { passive: true }); mark();
+  const rail = m.querySelector('.lk-rail'), dots = m.querySelectorAll('.lk-dots i'), head = m.querySelector('.lk-head'), headB = head.firstChild, cards = Array.from(rail.children);
+  let last = -1, wait = false;
+  const mark = () => { wait = false; const w = rail.clientWidth, mid = rail.scrollLeft + w / 2; let n = 0, best = 1e9;
+    cards.forEach((c, k) => { const d = Math.abs(c.offsetLeft - rail.offsetLeft + c.offsetWidth / 2 - mid); c.style.setProperty('--k', w ? Math.max(0, 1 - d / Math.max(1, c.offsetWidth)).toFixed(3) : (k === 0 ? 1 : 0)); c.style.setProperty('--d', w ? Math.max(-1, Math.min(1, (c.offsetLeft - rail.offsetLeft + c.offsetWidth / 2 - mid) / Math.max(1, c.offsetWidth))).toFixed(3) : 0); if (d < best) { best = d; n = k; } });
+    if (!w) n = 0; if (n === last) return; const first = last < 0; last = n;
+    dots.forEach((d, k) => d.classList.toggle('on', k === n)); if (w) box.style.setProperty('--tint', items[n][2]);
+    if (first) { headB.textContent = items[n][3]; return; }
+    head.classList.add('out'); setTimeout(() => { headB.textContent = items[last][3]; head.classList.remove('out'); }, 150); };
+  rail.addEventListener('scroll', () => { if (!wait) { wait = true; requestAnimationFrame(mark); } }, { passive: true });
+  cards.forEach((c) => c.addEventListener('click', () => rail.scrollTo({ left: c.offsetLeft - rail.offsetLeft + c.offsetWidth / 2 - rail.clientWidth / 2, behavior: 'smooth' })));
+  mark(); addEventListener('resize', mark);
 }
 const LK = [
   ['Aperçu', [
@@ -340,12 +512,12 @@ const LK = [
   function show(n) { n = (n + items.length) % items.length; cur = n; const m = items[n];
     list.querySelectorAll('li').forEach((li, k) => li.classList.toggle('on', k === n));
     box.style.setProperty('--tint', m[2]); cap.innerHTML = '<b>' + m[3] + '</b> ' + m[4]; num.textContent = (n + 1) + ' / ' + items.length;
-    img.style.opacity = 0; phone.style.transform = 'translateX(-50%) translateY(14px) scale(.985)';
-    setTimeout(() => { img.src = '../shots/' + m[1] + '.jpg'; img.alt = m[0]; img.style.opacity = 1; phone.style.transform = 'translateX(-50%)'; }, 240);
+    img.style.opacity = 0; phone.classList.add('swap');
+    setTimeout(() => { img.src = '../shots/' + m[1] + '.jpg'; img.alt = m[0]; img.style.opacity = 1; phone.classList.remove('swap'); }, 240);
     const li = list.children[n]; if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: li.offsetLeft - 18, behavior: 'smooth' }); }
   function group(g) { grp = g; items = LK[g][1];
     groups.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-selected', k === g));
-    list.innerHTML = items.map((m) => '<li><button><i></i>' + m[0] + '</button><div><b>' + m[3] + '</b> ' + m[4] + '</div></li>').join('');
+    list.innerHTML = items.map((m, k) => '<li style="--i:' + k + '"><button><i></i>' + m[0] + '</button><div><b>' + m[3] + '</b> ' + m[4] + '</div></li>').join('');
     list.querySelectorAll('li > button').forEach((b, k) => b.addEventListener('click', () => show(k)));
     list.scrollLeft = 0; show(0); lkMobile(items, box); }
   groups.querySelectorAll('button').forEach((b, k) => b.addEventListener('click', () => group(k)));
@@ -354,6 +526,12 @@ const LK = [
   document.getElementById('lk-prev').addEventListener('click', () => step(-1));
   phone.addEventListener('click', () => step(1));
   group(0);
+  // enhanced: on a computer the phone tilts a little under the pointer and its glass catches a light
+  if (matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    box.addEventListener('pointermove', (e) => { const r = phone.getBoundingClientRect(), cl = (v, a) => Math.max(-a, Math.min(a, v));
+      phone.style.setProperty('--ry', cl((e.clientX - (r.left + r.width / 2)) / r.width * 7, 12).toFixed(2)); phone.style.setProperty('--rx', cl(-(e.clientY - (r.top + r.height / 2)) / r.height * 6, 8).toFixed(2));
+      phone.style.setProperty('--gx', (e.clientX - r.left) + 'px'); phone.style.setProperty('--gy', (e.clientY - r.top) + 'px'); phone.style.setProperty('--go', 1); });
+    box.addEventListener('pointerleave', () => { ['--ry', '--rx'].forEach((v) => phone.style.setProperty(v, 0)); phone.style.setProperty('--go', 0); }); }
 })();
 </script>
 </body>
