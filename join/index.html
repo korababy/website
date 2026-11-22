@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Built by scripts/build_website_site.js from website/, 2026-11-20. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -9,11 +10,6 @@
   <link rel="icon" href="../img/icon.png">
   <meta name="theme-color" content="#0a0b0e">
   <style>
-    /* ⚖ The sign-up page wears the front page's look (Petru, 2026-11-14 01:15: "yes" to "Give the sign-up page the same
-       dark look next?") — graphite, the same bar, card and white button. LOOK ONLY: every word, the form and its script
-       are untouched. On a phone the page's links leave the bar (they are in the foot) and the long sentence under the
-       headline is not shown, so the form is on the first screen (his "way too much text right at the front").
-       One move back: git revert (the old light sheet with the sea-glass picture). */
     @font-face{font-family:Poppins;src:url('../fonts/Poppins_700Bold.ttf');font-weight:700;font-display:swap}
     @font-face{font-family:Poppins;src:url('../fonts/Poppins_600SemiBold.ttf');font-weight:600;font-display:swap}
     @font-face{font-family:Inter;src:url('../fonts/Inter_400Regular.ttf');font-weight:400;font-display:swap}
@@ -28,7 +24,6 @@
     header nav{display:flex;gap:26px;font-size:14px;color:var(--soft)}
     header nav a{text-decoration:none} header nav a:hover{color:var(--ink)}
     main{max-width:1120px;margin:0 auto;padding:0 24px 56px}
-    /* ENHANCED (Petru, 2026-11-14 01:25: "can you enhance it?"): the app itself is on the page — the front page's three phones (the test baby), under the words on a computer and under the form on a phone — and the card carries a soft light. Pictures only: no word, form or script line changed. */
     .scene{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.8fr);grid-template-areas:"copy card" "fan card";align-items:center;column-gap:56px;row-gap:36px;padding:64px 0 40px;position:relative}
     .copy{grid-area:copy;align-self:end}.card{grid-area:card}.fan{grid-area:fan;align-self:start}
     .fan{position:relative;height:clamp(260px,26vw,340px);max-width:520px}
@@ -102,10 +97,6 @@
 </main>
 <footer><span>© Kora Baby</span><a data-w="privacy" data-href="privacy.html" href="../privacy.html">Privacy</a><a data-w="support" data-href="support.html" href="../support.html">Support</a><a href="mailto:support@korababy.app">support@korababy.app</a></footer>
 <script>
-// LAUNCH 15.42 (Iris, 2026-10-31): the page in the parent's language, as r/ does — `?lang=de|it|fr` first (a
-// homepage's link), else the browser's first of en/de/it/fr, else English. The language picked is the `locale`
-// the server stores, so the launch email goes out in it (launch-email picks its template by that column).
-// ⏪ One move back: this file at its parent commit (English only, locale 'en' for everyone).
 const WORDS = {
   en: {
     pageTitle: 'Join the Kora Baby launch list',
@@ -216,7 +207,6 @@ document.documentElement.lang = LANG;
 document.title = W.pageTitle;
 document.querySelector('meta[name="description"]').content = W.description;
 for (const node of document.querySelectorAll('[data-w]')) node.textContent = W[node.getAttribute('data-w')];
-// The app's privacy and help pages in the same language; the launch list's own notice keeps the language too.
 for (const a of document.querySelectorAll('[data-href]')) a.href = '../' + (LANG === 'en' ? '' : LANG + '/') + a.getAttribute('data-href');
 if (LANG !== 'en') document.getElementById('notice-link').href = 'privacy.html?lang=' + LANG;
 (() => {

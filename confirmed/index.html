@@ -1,13 +1,5 @@
 <!doctype html>
-<!-- Kora Baby — the page a sign-up confirmation email lands on (launch 13.33 follow-up, Porta, 2026-10-27).
-     Why: Petru tapped Confirm on his Mac and Chrome showed a blank page — the email sent him to the app's own address
-     (korababy://), and a computer has no app. The address WAS confirmed; nothing said so.
-     What it does: says the address is confirmed, and on an iPhone or iPad offers to open Kora Baby. It signs nobody in —
-     the phone signs in with the password, as before. Supabase puts the sign-in tokens after the # of this address; the
-     script REMOVES them from the address bar and history at once and never reads, stores or sends them. A link that no
-     longer works (#error=…) says so. No cookie, no storage, nothing loaded from another site, not indexed.
-     Live only after his two moves: publish this page, and add https://korababy.app/confirmed/ to Supabase's Redirect URLs;
-     then `AuthLink.usesSignUpLanding` = true. de/it/fr: Iris writes them (du, tu, tu); an absent key reads the English. -->
+<!-- Built by scripts/build_website_site.js from website/, 2026-11-20. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -18,8 +10,6 @@
   <link rel="icon" href="../img/icon.png">
   <meta name="theme-color" content="#0a0b0e">
   <style>
-    /* The front page's dark look (Petru, 2026-11-14 01:25: "yes" to restyling this page and r/). LOOK ONLY: the words and
-       the script are untouched. One move back: git revert. */
     @font-face{font-family:Poppins;src:url('../fonts/Poppins_700Bold.ttf');font-weight:700;font-display:swap}
     @font-face{font-family:Inter;src:url('../fonts/Inter_400Regular.ttf');font-weight:400;font-display:swap}
     :root{color-scheme:dark;--ink:#f4f5f7;--soft:#a3a8b4;--page:#0a0b0e;--card:#15171c}
@@ -42,7 +32,6 @@
 </main>
 <script>
 (function () {
-  // de/it/fr: Iris, 2026-10-27 — informal (du, tu, tu); Juno reads de, fr and it.
   var WORDS = {
     en: {},
     de: {
@@ -78,7 +67,6 @@
     open: 'Open Kora Baby',
     pageTitle: 'Kora Baby — Email confirmed'
   };
-  // The tokens after the # are never kept: read whether it is an error, then wipe the address.
   var hash = location.hash || '';
   var failed = /(^|[#&])error(_code)?=/.test(hash);
   if (hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search);

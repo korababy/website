@@ -1,17 +1,5 @@
 <!doctype html>
-<!-- Kora Baby — r/index.html: the page a family's referral link opens (LAUNCH 12.7, Saga, 2026-10-25, on Ori's lend D270).
-     The link is https://korababy.app/r/?c=<CODE>, made by KoraReferral.link(for:) and shared by Invite friends while the
-     server's programme is open. A query, not a path: GitHub Pages serves /r/ as one static page and cannot route /r/<CODE>.
-     ⚠ Nothing assumes the code survives the App Store: the friend TYPES it in Kora Baby (Settings → Invite friends → "Have a code
-     from a friend?") — the shared message carries the code itself too. Universal links (the app opened straight from this
-     link) are after launch.
-     The code is read as strictly as the app reads it (KoraReferral.code(fromLink:)): exactly eight characters of the server's
-     alphabet, upper case, or nothing — anything else shows "no code", never a guess. The page sends nothing anywhere: no
-     cookie, no storage, nothing loaded from another site, one inline script that only reads its own address.
-     "30 days" and "your first month is free" are the offer's version 1 (migration 057's referral_terms; Petru 2026-10-11 and
-     2026-10-15) — a new version of the offer changes this page in the same session.
-     Words: English by Saga from the app's own lines; German, Italian and French are Iris's (until they land, those readers
-     get the English). Informal in every language (du, tu, tu). Not indexed by search engines. -->
+<!-- Built by scripts/build_website_site.js from website/, 2026-11-20. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -22,8 +10,6 @@
 <link rel="icon" href="../img/icon.png">
 <meta name="theme-color" content="#0a0b0e">
 <style>
-  /* The front page's dark look (Petru, 2026-11-14 01:25: "yes"). This page no longer reads ../styles.css (the old blue
-     sheet); the words, the code's rules and the script are untouched. One move back: git revert. */
   @font-face { font-family: Poppins; font-weight: 600; font-display: swap; src: url("../fonts/Poppins_600SemiBold.ttf"); }
   @font-face { font-family: Poppins; font-weight: 700; font-display: swap; src: url("../fonts/Poppins_700Bold.ttf"); }
   @font-face { font-family: Inter; font-weight: 400; font-display: swap; src: url("../fonts/Inter_400Regular.ttf"); }
@@ -88,9 +74,6 @@
 </div>
 <script>
 (function () {
-  // The offer's words per language. de/it/fr: Iris's to write (informal — du, tu, tu); an absent key reads the English.
-  // Iris, 2026-10-25: "friend" is said without a gender — Freunde in German, a famiglia amica / famille amie in
-  // Italian and French, the app's own words for the code switch; step2 quotes the app's catalogue exactly.
   var WORDS = {
     en: {},
     de: {
@@ -144,7 +127,6 @@
     if (w.pageTitle) document.title = w.pageTitle;
   }
 
-  // Strict, as the app: one `c`, exactly eight characters of the server's alphabet (no 0, O, 1, I), never tidied.
   var cs = new URLSearchParams(location.search).getAll('c');
   var code = (cs.length === 1 && /^[A-HJ-NP-Z2-9]{8}$/.test(cs[0])) ? cs[0] : null;
   if (code) {

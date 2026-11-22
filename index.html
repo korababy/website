@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Built by scripts/build_website_site.js from website/, 2026-11-20. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -20,14 +21,6 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="img/icon.png">
-<!-- THE PUBLISHED FRONT PAGE since 2026-11-14 (Petru, 13 Nov 23:58: "Yes, I like this. Let's publish it. So the dark on graphite") — scripts/build_website_site.js builds korababy.app from this file and e4/i18n.json. ⏪ One move back: the website project's previous commit, and FRONT back to 'd' in the build.
-     VERSION E4 — the WHOLE page dark, on his graphite screenshots of 13 Nov 23:45 (his "when I say mock, I want the full website, not just the closer look"): E3's layout, every colour turned for a dark page, the first-20 banner in ivory and gold. E3, E2 and E stay beside it.
-     VERSION E3 — E2 with the closer look on a dark stage, in three groups, with his 22 dark screenshots of 13 Nov 23:23 (every log type, the report, reminders, the sleep forecast); the first screen and the highlights keep the light ones. E2 stays in ../e2/.
-     VERSION E2 — E with a richer "Take a closer look" (his "i like E but we need to enhance the Take a closer look section", 2026-11-13): a stage, nine pills that open into a card, the phone and the colour change. The first E stays in ../e/.
-     VERSION E — "Gallery" (website-polish, 2026-11-13, Petru: "get yourself inspired … three versions … super premium").
-     From apple.com's product pages and meta.com: white and soft grey, giant centred words, a highlights carousel,
-     a bento grid, a compare table for the plans. A MOCK: English only, not published, screens are the test baby
-     (his screenshots of 13 Nov, Sky light). No reviews, counts or awards — Kora Baby has none yet. §2 in every line. -->
 <style>
 @font-face { font-family: Poppins; font-weight: 500; src: url(fonts/Poppins_500Medium.ttf); font-display: swap; }
 @font-face { font-family: Poppins; font-weight: 600; src: url(fonts/Poppins_600SemiBold.ttf); font-display: swap; }
@@ -55,14 +48,13 @@ header .btn { padding: 8px 16px; font-size: 13px; }
 .langs { display: flex; gap: 12px; font: 500 12px Inter; letter-spacing: .08em; color: var(--soft); } .langs [aria-current] { color: var(--ink); } .langs a:hover { color: var(--ink); }
 .hero { text-align: center; padding: 84px 0 0; }
 .eyebrow { font: 500 14px Inter; color: var(--soft); letter-spacing: .01em; }
-.hero h1 { font-weight: 700; font-size: clamp(44px, 8.6vw, 104px); margin: 14px auto calc(20px - .18em); padding-bottom: .18em; max-width: 11em; }   /* the padding gives the g and y of the last line room: the headline is painted through its letters (the light passing once), and paint stops at the box, which ended at the baseline and cut their tails (Petru, 2026-11-14: "the g is cut") */
+.hero h1 { font-weight: 700; font-size: clamp(44px, 8.6vw, 104px); margin: 14px auto calc(20px - .18em); padding-bottom: .18em; max-width: 11em; }
 .hero p.lead { font-size: clamp(18px, 2.1vw, 22px); color: var(--soft); max-width: 34em; margin: 0 auto 28px; }
 .hero .lead.short { display: none; }
 .cta { display: flex; gap: 22px; justify-content: center; align-items: center; flex-wrap: wrap; }
-.sky { margin: 56px auto 0; max-width: 1240px; border-radius: 44px; /* no panel: the three phones stand on the page itself (Petru, 2026-11-14 00:37). One move back: background: radial-gradient(70% 90% at 50% 105%, #5b6170, transparent 70%), linear-gradient(180deg, #23262d, #14161a 70%); box-shadow: inset 0 0 0 1px var(--edge). */ height: clamp(420px, 56vw, 700px); position: relative; overflow: hidden; }
+.sky { margin: 56px auto 0; max-width: 1240px; border-radius: 44px; height: clamp(420px, 56vw, 700px); position: relative; overflow: hidden; }
 .phone { position: absolute; width: clamp(190px, 25vw, 320px); aspect-ratio: 1206/2622; border-radius: 13.5% / 6.2%; background: #0c0d10; padding: 1.1%; box-shadow: 0 50px 100px -30px rgba(0,0,0,.85), 0 0 0 1px rgba(255,255,255,.2) inset; }
 .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 12.4% / 5.6%; display: block; }
-/* The first screen shows all THREE phones, WHOLE, on a phone too (Petru, 2026-11-14 00:03: "why not have the whole all three screenshots?"). Sized by the panel's height so none is cut. One move back: p1 top 9%, p0/p2 top 20%, the phone's own width, and p0/p2 hidden on a phone. */
 .sky .phone { width: auto; }
 .sky .p1 { left: 50%; top: 7%; height: 86%; transform: translateX(-50%); z-index: 2; }
 .sky .p0 { left: 50%; top: 14%; height: 74%; transform: translateX(-154%) rotate(-7deg); }
@@ -75,7 +67,6 @@ section { padding: 120px 0 0; }
 .hl { flex: 0 0 min(86vw, 860px); height: clamp(420px, 50vw, 560px); scroll-snap-align: center; border-radius: 36px; position: relative; overflow: hidden; background: var(--tile); padding: 40px; }
 .hl h3 { font-weight: 600; font-size: clamp(26px, 3.4vw, 40px); max-width: 9.5em; position: relative; z-index: 2; }
 .hl p { color: var(--soft); max-width: 21em; margin-top: 12px; position: relative; z-index: 2; }
-/* The phone is shown WHOLE in a highlight card (Petru, 2026-11-14: "I don't like that the screen gets cut here of the phone"). One move back: right: 7%; top: 12%; width: clamp(180px, 24vw, 290px). */
 .hl .phone { right: 8%; top: 50%; transform: translateY(-50%); height: 86%; width: auto; }
 .hl { box-shadow: inset 0 0 0 1px var(--edge); } .hl.blue { background: radial-gradient(80% 90% at 80% 100%, #2c4a6b, transparent 70%), #15171c; } .hl.sand { background: radial-gradient(80% 90% at 80% 100%, #6b4a2c, transparent 70%), #15171c; } .hl.dark { background: radial-gradient(80% 90% at 80% 100%, #4a3a6b, transparent 70%), #15171c; }
 .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; margin-top: 40px; }
@@ -89,7 +80,6 @@ section { padding: 120px 0 0; }
 .tile.tall { min-height: 460px; } .tile.tall .crop { left: 32px; right: 32px; width: calc(100% - 64px); bottom: 0; height: 250px; object-fit: cover; object-position: 0 20%; border-radius: 24px 24px 0 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; } .chips span { font: 500 14px Inter; padding: 8px 14px; border-radius: 99px; background: rgba(255,255,255,.07); border: 1px solid var(--edge); }
 .sw { display: flex; gap: 8px; margin-top: 22px; } .sw i { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); }
-/* plans */
 .toggle { display: inline-flex; background: var(--tile); border-radius: 99px; padding: 4px; margin: 28px 0 0; }
 .toggle button { border: 0; background: transparent; font: 500 14px Inter; padding: 9px 18px; border-radius: 99px; cursor: pointer; color: var(--soft); }
 .toggle button[aria-pressed="true"] { background: #fff; color: var(--paper); }
@@ -113,7 +103,6 @@ footer { margin-top: 120px; border-top: 1px solid var(--edge); background: var(-
 footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } footer b { color: var(--ink); font: 600 14px Poppins; }
 [data-r] { opacity: 0; transform: translateY(26px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.2,1); } [data-r].in { opacity: 1; transform: none; }
 @media (max-width: 760px) {
-  /* A phone has a MENU (Petru, 2026-11-14: "And where's the menu?"): the links and the languages open under the bar. */
   header .wrap { gap: 12px; } header .btn { padding: 8px 14px; }
   .burger { display: grid; place-content: center; gap: 6px; width: 40px; height: 40px; margin-right: -8px; border: 0; background: transparent; cursor: pointer; }
   .burger i { display: block; width: 20px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform .25s; }
@@ -125,7 +114,6 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   @media (max-width: 350px) { header .btn { display: none; } }
 }
 @media (min-width: 0px) {
-  /* FEWER WORDS up front on a phone (Petru, same message: "There is way too much text right at the front"): the headline, one line, the button. */
   .hero { padding-top: 40px !important; } .hero .eyebrow, .hero .lead.long, .hero .cta .link { display: none; } .hero .lead.short { display: block; margin-bottom: 24px; } .sky { margin-top: 40px; } section { padding-top: 84px; }
   .sky { border-radius: 0; height: 440px; } .sky .p1 { top: 8%; height: 84%; } .sky .p0, .sky .p2 { top: 17%; height: 68%; } .sky .p0 { transform: translateX(-121%) rotate(-7deg); } .sky .p2 { transform: translateX(21%) rotate(7deg); }
   .hl { padding: 28px 28px 32px; height: auto; display: flex; flex-direction: column; } .hl p { margin-bottom: 28px; } .hl .phone { position: relative; right: auto; top: auto; transform: none; height: auto; width: 200px; margin: auto auto 0; }
@@ -133,7 +121,6 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   .cmp { padding: 4px 18px 20px; border-radius: 28px; } .cmp .row { grid-template-columns: 1.3fr .8fr .9fr; font-size: 14px; gap: 6px; } .cmp .pr { font-size: 24px; } .cmp h3 { font-size: 17px; }
   .first { grid-template-columns: 1fr; padding: 32px; gap: 18px; } .first .n { font-size: 96px; }
 }
-/* E2 — the closer look, apple.com's way: a stage, pills that open into a card, the phone changes */
 @property --tint { syntax: '<color>'; inherits: true; initial-value: #2d5f8a; }
 .look { --tint: #2d5f8a; margin-top: 40px; border-radius: 40px; position: relative; overflow: hidden; height: 780px; color: #fff; box-shadow: inset 0 0 0 1px var(--edge); background: linear-gradient(180deg, #2b2e36, rgba(43,46,54,0) 46%), radial-gradient(110% 95% at 72% 100%, var(--tint), #101216 74%); transition: --tint .7s; }
 .lk-groups { position: absolute; z-index: 3; left: 44px; top: 40px; display: inline-flex; gap: 4px; padding: 4px; border-radius: 99px; background: rgba(255,255,255,.1); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
@@ -167,20 +154,12 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   .lk-nav { display: none; }
   .tile.n4, .tile.n3, .tile.n2 { grid-column: auto; }
 }
-/* ⚖ THE CLOSER LOOK ON A PHONE IS "A" — Petru, 2026-11-14 00:35, holding the lab pages lk-a and lk-b: "Let's do A. But can
-   you make it a bit smaller so it fits on the screen? … I'm not able to see on my phone screen like the full section."
-   One page at a time, swiped; the whole phone; dots — and the WHOLE stage fits one screen (100svh less the bar), so
-   nothing is scrolled while swiping. ❌ B, the plus list that opens in place (lk-b). ❌ the first one: chips in a second
-   row and the phone cut. One move back: delete this block and the lkMobile call. */
 .lk-m { display: none; }
 @media (min-width: 0px) {
   .look { --lkh: clamp(500px, calc(100svh - 76px), 660px); height: var(--lkh); scroll-margin-top: 66px; }
-  /* ⚖ Petru, 2026-11-14 00:55: "instead of having the card, can you make it to be like a full wide screen instead of just of the card?" — on a phone the stage runs edge to edge, no rounded card: only the page's colour glow behind the phone. One move back: delete this line. */
-  /* …and it is still a SECTION OF ITS OWN (Petru, a minute later: "not necessarily directly in the background. I still want to have like a container segregation, and like a border at the top, at the bottom, just to basically highlight this is the carousel section"): a band with its own ground and a line above and below. ❌ no ground at all (the first try). */
   .look { margin-left: -24px; margin-right: -24px; border-radius: 0; box-shadow: none; border-top: 1px solid rgba(255,255,255,.13); border-bottom: 1px solid rgba(255,255,255,.13); background: radial-gradient(120% 62% at 50% 60%, var(--tint), transparent 78%), linear-gradient(180deg, #1d2026, #14161b); }
   .look > ol, .look > .lk-stage, .look > .lk-cap, .look > .lk-nav { display: none !important; }
   .lk-m { display: flex; flex-direction: column; flex: 1; min-height: 0; order: 2; }
-  /* ⚖ Petru, 2026-11-14 00:45: "let's put the whole picture to be the first one. And at the moment it's in two rows. Maybe we need to rename it … And also there's too much text." → the group is first and is "Overview"; every group name sits in ONE row; a page is its headline and the phone (its sentence shows on a computer). One move back for the words: delete `.lk-card p { display: none; }` and take 172px back to 250px. */
   .lk-groups { display: flex; justify-content: space-between; margin: 12px 12px 0; overflow: visible; flex: none; }
   .lk-groups button { flex: 1 1 auto; white-space: nowrap; padding: 5px 5px; font-size: 12px; letter-spacing: -.01em; line-height: 1.2; min-height: 36px; }
   #look .sub { display: none; }
@@ -189,17 +168,11 @@ footer .r { display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 12px; } fo
   .lk-card b { font: 600 20px/1.2 Poppins; letter-spacing: -.02em; color: #fff; height: 2.4em; display: flex; align-items: center; margin-bottom: 14px; }
   .lk-card p { display: none; }
   .lk-card .phone { position: relative; left: auto; top: auto; transform: none; flex: none; height: calc(var(--lkh) - 172px); width: auto; box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2); }
-  /* ⚖ The plans' two columns LINE UP on a phone (Petru, 2026-11-14 00:48, holding the page: "I don't like how the text is not aligned here"): each column is name · price · one small line, each on its own row and never wrapped, so Free and Kora Premium sit level; the price column is wide enough for "CHF 49.95". One move back: delete these three lines. */
   .cmp { padding-left: 14px; padding-right: 14px; } .cmp .row { grid-template-columns: minmax(0, 1fr) 72px 106px; }
   .cmp .row.head { align-items: start; } .cmp .row.head h3 { font-size: 14px; white-space: nowrap; } .cmp .pr { font-size: 20px; white-space: nowrap; margin-top: 4px; }
   .cmp .pr small { display: block; font: 400 13px/1.4 Inter; margin-top: 4px; } .cmp .note { font-size: 13px; line-height: 1.4; margin-top: 4px; text-wrap: balance; }
   .lk-dots { flex: none; display: flex; justify-content: center; align-items: center; gap: 7px; padding: 12px 0 14px; } .lk-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .lk-dots i.on { background: #fff; width: 22px; }
 }
-/* ── ENHANCED (Petru, 2026-11-14 01:35: "I meant also enhance the website itself"). Motion and light, no new sentence:
-   the three phones rise and fan out when the page opens, over a slow light; the numbers count up; the gold banner
-   catches a sheen; the highlights have dots on a phone; the story has its name; the page closes on a band with the
-   headline and the button; a pressed button gives. All of it stands still for a reader who asked for reduced motion.
-   One move back: delete this block, the .close section and the script's "enhanced" lines. */
 .sky::before { content: ""; position: absolute; inset: 6% -10% -6%; z-index: 0; pointer-events: none;
   background: radial-gradient(34% 44% at 50% 62%, rgba(120,150,230,.46), transparent 70%), radial-gradient(26% 36% at 26% 70%, rgba(170,130,255,.28), transparent 70%), radial-gradient(26% 36% at 76% 68%, rgba(217,187,124,.28), transparent 70%); }
 .sky .phone { z-index: 1; } .sky .p1 { z-index: 2; }
@@ -233,12 +206,6 @@ footer { margin-top: 0; } footer b { display: inline-flex; align-items: center; 
   .hl-dots { display: flex; justify-content: center; gap: 7px; padding-top: 14px; } .hl-dots i { width: 7px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.28); transition: width .25s, background .25s; } .hl-dots i.on { background: #fff; width: 22px; }
   .close { padding-top: 84px; } .close .wrap { padding: 72px 24px 80px; }
 }
-/* ── EFFECTS (Petru, 2026-11-14 01:45: "add some cool elements, maybe some kind of animation, maybe some kind of effects"):
-   a night sky of slow stars behind the first screen and the closing band · a light that passes over the headline · the
-   three phones open a little as you scroll · a ribbon of the twelve logs that drifts by · a gold line under the bar that
-   grows as you read · each highlight's phone slides up into its card · a gold light that runs round the first-20 banner ·
-   the K at the foot breathes · a spotlight that follows the pointer on a computer. Everything needs the script (html.fx)
-   and stands still under reduced motion. One move back: delete this block, the .ticker line and the script's "effects" block. */
 @property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; transform: scaleX(var(--prog)); transform-origin: 0 50%; will-change: transform; background: linear-gradient(90deg, #f3dfb4, #b58a3c); pointer-events: none; }
 .hero { position: relative; } .hero > .wrap { position: relative; z-index: 1; }
@@ -269,11 +236,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
   @keyframes breathe { 0%, 100% { transform: translateY(0); box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 20px 50px -16px rgba(0,0,0,.9), 0 0 0 rgba(120,150,230,0); } 50% { transform: translateY(-8px); box-shadow: 0 0 0 1px rgba(255,255,255,.22), 0 30px 60px -16px rgba(0,0,0,.9), 0 0 60px rgba(120,150,230,.45); } }
 }
 @media (min-width: 0px) { .ticker { margin-top: 40px; } .fx .sky { --spread: -8px; } }
-/* ── THE CLOSER LOOK, ENHANCED (Petru, 2026-11-14 01:55: "Enhance also the take a closer look"). Phone: a carousel —
-   the page in the middle whole and bright, its neighbours smaller and dim at the sides, one headline above that changes
-   with it, a tap on a neighbour brings it in; still one screen high, still swiped. Computer: the phone turns as it
-   changes, tilts under the pointer with a light on its glass, and the pills arrive one after another.
-   One move back: delete this block and take lkMobile, show() and group() back from the commit before. */
 .lk-stage .phone { transform: translateX(-50%) perspective(1100px) rotateY(calc(var(--ry, 0) * 1deg)) rotateX(calc(var(--rx, 0) * 1deg)); transition: transform .35s cubic-bezier(.2,.7,.2,1), filter .3s; }
 .lk-stage .phone.swap { transform: translateX(-50%) perspective(1100px) rotateY(-16deg) translateY(16px) scale(.96); filter: blur(3px) brightness(.8); }
 .lk-stage .phone::after { content: ""; position: absolute; inset: 1.1%; border-radius: 12.4% / 5.6%; pointer-events: none; background: radial-gradient(240px circle at var(--gx, 30%) var(--gy, 0%), rgba(255,255,255,.17), transparent 70%); opacity: var(--go, 0); transition: opacity .3s; }
@@ -287,33 +249,15 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
   .lk-card { flex: 0 0 calc(var(--pw) + 22px); padding: 0; scroll-snap-stop: normal; transform: scale(calc(.8 + .2 * var(--k, 0))); opacity: calc(.38 + .62 * var(--k, 0)); transform-origin: 50% 44%; will-change: transform; }
   .lk-card .phone { box-shadow: 0 24px 50px -22px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.2), 0 0 calc(60px * var(--k, 0)) rgba(255,255,255,.10); }
 }
-/* On a phone the top bar is solid, not frosted glass (2026-11-14, after his screen recording of the live page: 21 of
-   325 moving frames froze while he scrolled the first screen). Frosted glass blurs whatever passes under the bar again
-   on every frame — the three phones and the stars; on this dark page a solid bar looks the same. A computer keeps the glass.
-   One move back: delete this rule. */
 @media (max-width: 760px) { header { background: rgba(10,11,14,.94); backdrop-filter: none; -webkit-backdrop-filter: none; } }
-/* ⚖ THE CLOSER LOOK ON A PHONE IS THE ARC, WITH NO BAND — Petru, 2026-11-14 02:25, holding the lab (lk2): "arc"
-   (after "I don't think I like anymore the container thing, the segregation thing … I like the carousel"). The carousel
-   stands on the page itself with only its colour behind it, and the pages at the sides turn away like covers on a shelf.
-   ❌ the band with a line above and below (his own ask an hour earlier) · ❌ 1 Open (word tabs) · ❌ 2 Spotlight · ❌ 3 Soft
-   band — all four still in website/versions/lk2/. One move back: delete this block. */
 @media (min-width: 0px) {
   .look { border: 0; background: radial-gradient(90% 48% at 50% 60%, var(--tint), transparent 74%); }
   .lk-card { transform: perspective(820px) rotateY(calc(var(--d, 0) * -44deg)) scale(calc(.82 + .18 * var(--k, 0))); opacity: calc(.5 + .5 * var(--k, 0)); }
 }
-/* ── FROM APPLE: the story LIGHTS UP as you read (Petru, same message: "story lights up i want to see") — every word
-   starts dim and turns white as the paragraph passes up the screen, as the big statements on apple.com do. Needs the
-   script (it wraps the words); without it the paragraph reads as before. One move back: delete this block and the
-   script's "story lights up" block. */
 .story.lights p, .story.lights p span { color: rgba(244,245,247,.2); }
 .story.lights .w { transition: color .35s; } .story.lights .w.lit { color: #f4f5f7; }
 </style>
 <style>
-/* VERSION E6 — THE REVAMP, published on Petru's word of 2026-11-14 (it was lab e5 (Petru, 2026-11-14: "do a full on revamp of the website. enhance it more and make sure no
-   repetitive sections"). One job to a section, each shown its own way: the three phones open the page, the ribbon names
-   the logs, FIVE CHAPTERS say what Kora Baby does (each a live drawing, none a screenshot), the closer look is the one
-   gallery of phones, then the numbers, the plans, the story. Rejected on the way here, kept in lab hl2: the carousel of
-   five phones, the tiles with close-ups, A (one picture card), B (numbered lines), C (colour cards). Not published. */
 .chs { position: relative; z-index: 0; padding: 26px 0 10px; overflow-x: clip; scroll-margin-top: 60px; }
 .ch { position: relative; max-width: 1120px; margin: 0 auto; padding: 38px 24px; display: grid; gap: 26px; }
 .ch::before { content: ""; position: absolute; inset: 22% 0 0; z-index: -1; pointer-events: none; background: radial-gradient(62% 46% at 50% 58%, var(--g), transparent 74%); }
@@ -323,10 +267,9 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .ch-art { position: relative; display: grid; justify-items: center; }
 .ch-txt { transition: opacity .8s, translate .8s cubic-bezier(.2,.7,.2,1); }
 .fx .ch:not(.go) .ch-txt { opacity: 0; translate: 0 22px; }
-@media (min-width: 100000px) { /* was: the chapters side by side on a computer */ .ch { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 84px 24px; } .ch.c { text-align: left; } .ch.c p { margin-left: 0; } .ch.flip .ch-txt { order: 2; }
+@media (min-width: 100000px) { .ch { grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 84px 24px; } .ch.c { text-align: left; } .ch.c p { margin-left: 0; } .ch.flip .ch-txt { order: 2; }
   .ch h3 { font-size: 52px; } .ch p { font-size: 20px; } .ch::before { inset: 0; background: radial-gradient(38% 52% at var(--gx, 75%) 52%, var(--g), transparent 74%); } .ch.flip { --gx: 25%; } }
 
-/* 1 · the night — the dial draws itself: a tap at bedtime, the night sweeps round, a tap at the wake-up */
 .dial { width: min(100%, 300px); height: auto; overflow: visible; }
 .dial text { font-family: Inter, system-ui, sans-serif; fill: var(--soft); } .dial .sm { font-size: 10px; letter-spacing: .06em; opacity: .7; } .dial .tm { font-size: 12px; fill: #cfe4fa; font-weight: 500; }
 .dial .big { font: 600 34px Poppins, system-ui, sans-serif; fill: var(--ink); letter-spacing: -.01em; } .dial .mn { fill: #9bd0fb; }
@@ -340,14 +283,12 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fx .ch.go .dial .r1 { animation: rip 1s .2s both; } .fx .ch.go .dial .r2 { animation: rip 1s 2.1s both; }
 @keyframes rip { from { opacity: .9; scale: 1; } to { opacity: 0; scale: 3.4; } }
 
-/* 0 · the phrase at the top — Petru's "this is our phrase": first on a phone too, in gold */
 .hero .eyebrow.motto { display: flex; flex-direction: column; align-items: center; gap: 10px; animation: head .9s cubic-bezier(.2,.7,.2,1) backwards; }
 .motto .us { display: inline-flex; align-items: center; gap: 8px; font: 500 15px Poppins, system-ui, sans-serif; letter-spacing: 0; color: #efdcaf; padding: 8px 17px 8px 13px; border-radius: 99px; background: linear-gradient(180deg, rgba(217,187,124,.14), rgba(217,187,124,.05)); box-shadow: inset 0 0 0 1px rgba(217,187,124,.45), 0 10px 30px -12px rgba(217,187,124,.35); }
 .motto .us svg { width: 15px; height: 15px; fill: #e2c27f; flex: none; }
 .motto .where { font: 500 13px Inter, system-ui, sans-serif; color: var(--soft); }
 @media (min-width: 0px) { .hero .eyebrow.motto { display: flex; margin-bottom: 4px; } .motto .where { display: none; } .motto .us { font-size: 14px; } }
 
-/* 1 · one tap, even half asleep — three in the morning, no signal; a tap on Bottle and it is saved */
 .ql { width: min(100%, 340px); display: grid; justify-items: center; }
 .ql-card { width: 100%; border-radius: 28px; padding: 14px 16px 18px; background: #17191f; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), 0 30px 60px -24px rgba(0,0,0,.9); }
 .ql-bar { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 14px; } .ql-bar b { font: 600 14px Inter, system-ui, sans-serif; }
@@ -362,7 +303,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fx .ch.go .ql .tap { animation: rip 1s .45s both; } .fx .ch.go .ql .t svg { background: #f07a3a; }
 .fx .ch:not(.go) .saved { opacity: 0; translate: 0 14px; scale: .8; }
 
-/* 2 · today, at a glance — the three numbers count in, the day's axis draws down, each entry lands on its side */
 .gl { width: min(100%, 360px); display: grid; gap: 14px; }
 .gl-nums { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
 .gl-nums span { display: grid; gap: 4px; padding: 2px 0; transition: opacity .5s calc(var(--d) * .15s + .1s), translate .6s cubic-bezier(.2,.7,.2,1) calc(var(--d) * .15s + .1s); }
@@ -385,10 +325,8 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fx .ch:not(.go) .gl-nums span { opacity: 0; translate: 0 12px; } .fx .ch:not(.go) .axis .spine { scale: 1 0; } .fx .ch:not(.go) .ar .pt { scale: 0; }
 .fx .ch:not(.go) .ar.ev .ent { opacity: 0; translate: 16px 0; } .fx .ch:not(.go) .ar.od .ent { opacity: 0; translate: -16px 0; }
 
-/* a long word (French "Diversification") takes two lines, never runs out of its card — rule 8 */
 .fc .crow b, .ar .ent b { min-width: 0; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; } .ar .ent > span:last-child { min-width: 0; } .ar .r, .ar .l { min-width: 0; max-width: 100%; }
 
-/* 3 · sleep, the predictions lit — the logged night sweeps to now; what is expected breathes; the three times land */
 .pr { width: min(100%, 360px); display: grid; justify-items: center; gap: 16px; }
 .pdial { width: min(100%, 290px); height: auto; overflow: visible; }
 .pdial text { font-family: Inter, system-ui, sans-serif; fill: var(--soft); } .pdial .sm { font-size: 10px; letter-spacing: .06em; opacity: .7; } .pdial .tm { font-size: 12px; fill: #cfe4fa; font-weight: 500; }
@@ -407,7 +345,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fx .ch:not(.go) .pdial .lg { stroke-dashoffset: var(--len); } .fx .ch:not(.go) .pdial .exp, .fx .ch:not(.go) .pdial .hand, .fx .ch:not(.go) .pdial .big, .fx .ch:not(.go) .pdial .cap, .fx .ch:not(.go) .pdial .tm { opacity: 0; }
 .fx .ch:not(.go) .pchips span { opacity: 0; translate: 0 14px; }
 
-/* 2 · food — the app's own food tiles land one after another, each already ticked */
 .foods { width: 100%; max-width: 420px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .foods i { position: relative; aspect-ratio: 1; border-radius: 20%; background: linear-gradient(160deg, color-mix(in srgb, var(--b) 70%, #fff), var(--b)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.5), 0 14px 26px -12px rgba(0,0,0,.8); display: grid; place-items: center; container-type: inline-size;
   font-style: normal;
@@ -418,7 +355,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fx .ch:not(.go) .foods s { scale: 0; }
 .fx .ch:not(.go) .foods i { opacity: 0; scale: .55; rotate: -8deg; }
 
-/* 3 · the family — one of them logs a bottle; it reaches the other two */
 .fam { position: relative; width: 300px; height: 250px; }
 .fam svg { position: absolute; inset: 0; width: 100%; height: 100%; } .fam .ln { fill: none; stroke: rgba(190,170,255,.7); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1s cubic-bezier(.4,0,.2,1) .7s; }
 .fam .av { position: absolute; width: 64px; height: 64px; margin-left: -32px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, #9a7bf0, #4a2fa3); box-shadow: 0 0 0 6px rgba(154,123,240,.16), 0 16px 30px -10px rgba(0,0,0,.8); transition: scale .6s cubic-bezier(.2,1.4,.4,1), opacity .5s; }
@@ -430,7 +366,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fam { margin-bottom: 22px; }
 .fx .ch:not(.go) .fam .ln { stroke-dashoffset: 1; } .fx .ch:not(.go) .fam .chip { scale: .4; opacity: 0; } .fx .ch:not(.go) .fam .a1, .fx .ch:not(.go) .fam .a2 { scale: .7; opacity: .35; }
 
-/* 4 · the weeks — the bars rise, the line draws across them, the Story's star lands */
 .chart { width: min(100%, 340px); height: auto; overflow: visible; }
 .chart .bar { fill: url(#bg); transform-box: fill-box; transform-origin: 50% 100%; transition: scale .9s cubic-bezier(.2,.9,.3,1) calc(var(--d) * 80ms + .1s); }
 .chart .line { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1) .8s; }
@@ -438,7 +373,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .chart .star { fill: var(--gold); transform-box: fill-box; transform-origin: center; transition: scale .6s cubic-bezier(.2,1.6,.4,1) 2.1s, rotate .6s 2.1s; }
 .fx .ch:not(.go) .chart .bar { scale: 1 0; } .fx .ch:not(.go) .chart .line { stroke-dashoffset: 1; } .fx .ch:not(.go) .chart .dot { scale: 0; } .fx .ch:not(.go) .chart .star { scale: 0; rotate: -60deg; }
 
-/* 5 · the weather — the number, large, the moon coming up beside it, the hours after it */
 .wx { width: 100%; max-width: 360px; text-align: center; }
 .wx-top { display: flex; justify-content: center; align-items: flex-start; gap: 6px; }
 .wx .deg { font: 700 112px/1 Poppins, system-ui, sans-serif; letter-spacing: -.04em; background: linear-gradient(180deg, #fff 30%, #8fc6f5); -webkit-background-clip: text; background-clip: text; color: transparent; transition: opacity .9s .1s, translate .9s cubic-bezier(.2,.7,.2,1) .1s; }
@@ -449,12 +383,10 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .wx-hrs b { font: 400 11px Inter, system-ui, sans-serif; color: var(--soft); } .wx-hrs svg { width: 16px; fill: #f3e3ad; } .wx-hrs i { font: 500 15px Inter, system-ui, sans-serif; font-style: normal; }
 .fx .ch:not(.go) .wx .deg { opacity: 0; translate: 0 26px; } .fx .ch:not(.go) .wx .moon { opacity: 0; translate: -34px 30px; rotate: -40deg; } .fx .ch:not(.go) .wx-hrs span { opacity: 0; translate: 0 16px; }
 
-/* ---- the family, three ways: the lab's own switch sits in the chapter; only the picked one shows */
 
 .fv .av { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--p); color: #16121e; font: 700 11px Poppins, system-ui, sans-serif; font-style: normal; flex: none; }
 .fv .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 22%, transparent); flex: none; }
 .fv small { display: block; font: 400 12px Inter, system-ui, sans-serif; color: var(--soft); }
-/* A */
 .fa .day { width: min(100%, 360px); margin: 0 auto; text-align: left; border-radius: 26px; padding: 16px 14px 8px; background: #17191f; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), 0 30px 60px -24px rgba(0,0,0,.9); }
 .fa .day-h { display: flex; align-items: center; gap: 9px; padding: 0 4px 12px; } .fa .day-h b { font: 600 17px Poppins, system-ui, sans-serif; } .fa .day-h em { margin-left: auto; font: 500 12px Inter, system-ui, sans-serif; font-style: normal; color: var(--soft); }
 .fa .bb, .fc .bb { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: #2a2d36; font: 600 13px Poppins, system-ui, sans-serif; }
@@ -462,7 +394,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fa .row b { font: 600 15px Inter, system-ui, sans-serif; } .fa .what { flex: 1; min-width: 0; }
 .fa .who { display: inline-flex; align-items: center; gap: 6px; font: 500 12px Inter, system-ui, sans-serif; padding: 4px 9px 4px 4px; border-radius: 99px; background: rgba(255,255,255,.07); transition: opacity .4s calc(var(--d) * .55s + .5s), scale .5s cubic-bezier(.2,1.5,.4,1) calc(var(--d) * .55s + .5s); }
 .fx .ch:not(.go) .fa .row { opacity: 0; translate: 0 14px; background: rgba(255,255,255,.08); } .fx .ch:not(.go) .fa .who { opacity: 0; scale: .5; }
-/* B */
 .fb .minis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: min(100%, 420px); margin: 0 auto; }
 .fb .mini { position: relative; text-align: left; border-radius: 22px; padding: 12px 9px 12px; background: #17191f; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), 0 24px 44px -20px rgba(0,0,0,.9); min-width: 0; }
 .fb .mini.me { box-shadow: inset 0 0 0 1.5px rgba(143,184,245,.8), 0 24px 44px -20px rgba(0,0,0,.9); }
@@ -474,7 +405,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 .fb .tap { position: absolute; left: 50%; top: 62%; width: 34px; height: 34px; margin: -17px; border-radius: 50%; border: 2px solid #fff; opacity: 0; pointer-events: none; }
 .fx .ch.go .fb .tap { animation: rip 1s .3s both; }
 .fx .ch:not(.go) .fb .new { opacity: 0; translate: 0 10px; }
-/* C */
 .fc { position: relative; width: 320px; height: 300px; margin: 0 auto; }
 .fc svg { position: absolute; inset: 0; width: 100%; height: 100%; } .fc .ln { fill: none; stroke: rgba(190,170,255,.75); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset .6s cubic-bezier(.4,0,.2,1) calc(var(--d) * .6s + .3s); }
 .fc .pp { position: absolute; width: 84px; margin-left: -42px; display: grid; justify-items: center; gap: 5px; font: 500 12px Inter, system-ui, sans-serif; transition: scale .5s cubic-bezier(.2,1.5,.4,1) calc(var(--d) * .6s + .2s); }
@@ -488,17 +418,27 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
 
 </style>
 <style>
-/* LAB e7 — a computer reads the phone's page, larger (Petru, 2026-11-14: "make it similar to the phone version") */
 @media (min-width: 761px) {
   .hero { padding-top: 72px !important; } .hero .lead.short { font-size: 22px; margin-bottom: 30px; }
   .sky { height: 620px; max-width: 900px; } .fx .sky { --spread: -18px; }
-  main .wrap { max-width: 808px; } /* one centred column, the phone's, wider */
+  main .wrap { max-width: 808px; }
   .ch { max-width: 808px; padding: 64px 24px; gap: 34px; } .ch h3 { font-size: 46px; } .ch p { font-size: 20px; max-width: 26em; }
   .ch::before { inset: 18% -20% 0; background: radial-gradient(60% 50% at 50% 62%, var(--g), transparent 74%); }
   .pdial, .dial { width: min(100%, 340px); } .pr, .gl, .ql { width: min(100%, 420px); } .foods { max-width: 480px; } .chart { width: min(100%, 420px); }
   .fc { scale: 1.15; margin: 24px auto; }
   .look { --lkh: clamp(560px, calc(100svh - 96px), 720px); margin-left: 0; margin-right: 0; }
   .lk-groups { max-width: 420px; margin: 12px auto 0; width: 100%; }
+}
+.sky { --u: 4.4px; }
+@media (min-width: 761px) { .sky { --u: 6.2px; } }
+.sky .phone, .fx .sky .phone { translate: none; rotate: none; scale: none; will-change: auto; animation: none; }
+.sky .p1 { left: 50%; top: 4%; height: 88%; transform: translateX(-50%); z-index: 3; }
+.sky .p0 { left: calc(50% - var(--u) * 22); top: 12%; height: 76%; transform: translateX(-50%); z-index: 2; }
+.sky .p2 { left: calc(50% + var(--u) * 21); top: 20%; height: 64%; transform: translateX(-50%); z-index: 1; }
+.sky .p0, .sky .p2 { box-shadow: 0 30px 60px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.16) inset; }
+@media (prefers-reduced-motion: no-preference) {
+  .sky .phone, .fx .sky .phone { animation: still-in .9s .15s ease-out backwards; }
+  @keyframes still-in { from { opacity: 0; } }
 }
 </style>
 </head>
@@ -609,7 +549,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
     <div><h3>The first 20 families.</h3><p>Kora Premium, free, for good — confirmed in Kora Baby and belonging to the household. Not a reservation made by email.</p></div>
     <a class="btn" href="mailto:support@korababy.app">Ask about a place</a>
   </div>
-  <p class="small">Outside Switzerland, 4.99 a month or 49.99 a year in your App Store’s currency.</p>
 </div></section>
 
 <section class="story" id="story"><div class="wrap" data-r>
@@ -633,7 +572,6 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
   const set = (open) => { h.classList.toggle('open', open); b.setAttribute('aria-expanded', open); };
   b.addEventListener('click', () => set(!h.classList.contains('open')));
   document.querySelectorAll('#menu a').forEach((a) => a.addEventListener('click', () => set(false))); })();
-// enhanced: the big numbers count up once, when they come into view (and stand still for reduced motion)
 (function () { if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   const nums = document.querySelectorAll('.tile .num, .first .n');
   const o = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; o.unobserve(e.target);
@@ -641,14 +579,12 @@ header { --prog: 0; } header::after { content: ""; position: absolute; left: 0; 
     const tick = (t) => { const k = Math.min(1, (t - t0) / ms); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
     el.textContent = '0'; requestAnimationFrame(tick); }), { threshold: .6 });
   nums.forEach((n) => o.observe(n)); })();
-// enhanced: on a phone the highlights show where you are, as the closer look does
 (function () { const rail = document.querySelector('.rail'); if (!rail) return; const cards = rail.children;
   const dots = document.createElement('div'); dots.className = 'hl-dots'; dots.innerHTML = Array.from(cards, () => '<i></i>').join(''); rail.after(dots);
   const mark = () => { const mid = rail.scrollLeft + rail.clientWidth / 2; let n = 0, best = 1e9; Array.from(cards).forEach((c, k) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < best) { best = d; n = k; } });
     dots.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === n)); };
   rail.addEventListener('scroll', mark, { passive: true }); mark(); })();
 document.querySelectorAll('.rail img').forEach((i) => { i.loading = 'lazy'; i.decoding = 'async'; });
-// effects (2026-11-14): stars, the ribbon, the gold line under the bar, the phones that open as you scroll, the highlights' phones, the pointer's spotlight
 (function () { const root = document.documentElement; root.classList.add('fx');
   const rnd = (function (a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; })(20261114);
   const sky = (host, n, maxTop) => { if (!host) return; const d = document.createElement('div'); d.className = 'stars'; let h = '';
@@ -657,19 +593,15 @@ document.querySelectorAll('.rail img').forEach((i) => { i.loading = 'lazy'; i.de
   sky(document.querySelector('.hero'), 46, 62); sky(document.querySelector('.close .wrap'), 30, 100);
   const tr = document.getElementById('ticker'); if (tr) tr.innerHTML += tr.innerHTML;
   const head = document.querySelector('header'), stage = document.querySelector('.sky'); let wait = false;
-  // ⚖ SMOOTH (Petru, 2026-11-14 02:50, on his phone: "I like that animation, but it's a bit freezing. It's not that smooth"): the phones no longer jump to
-  // where each scroll step says — they glide there, a little every frame (a scroll step only sets where to go).
   let goal = 0, now = 0, gliding = false;
   const glide = () => { now += (goal - now) * .16; if (Math.abs(goal - now) < .0015) now = goal; stage.style.setProperty('--s', now.toFixed(4)); if (now !== goal) requestAnimationFrame(glide); else gliding = false; };
   const onScroll = () => { wait = false; const max = document.documentElement.scrollHeight - innerHeight; head.style.setProperty('--prog', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0);
     if (stage) { const r = stage.getBoundingClientRect(); if (r.bottom > -200 && r.top < innerHeight + 200) { goal = Math.max(0, Math.min(1, (innerHeight * .9 - r.top) / (innerHeight * .9))); if (!gliding && goal !== now) { gliding = true; requestAnimationFrame(glide); } } } };
   addEventListener('scroll', () => { if (!wait) { wait = true; requestAnimationFrame(onScroll); } }, { passive: true }); onScroll();
-  // a highlight's phone slides in once its card is on screen — and a card already passed never keeps its phone hidden
   const cards = Array.from(document.querySelectorAll('.hl'));
   const see = () => cards.forEach((c) => { if (c.classList.contains('seen')) return; const r = c.getBoundingClientRect(); if (r.top < innerHeight * .82 && r.left < innerWidth * .8) c.classList.add('seen'); });
   addEventListener('scroll', see, { passive: true }); const hlRail = document.querySelector('.rail'); if (hlRail) hlRail.addEventListener('scroll', see, { passive: true }); see();
   if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.tile').forEach((t) => t.addEventListener('pointermove', (e) => { const r = t.getBoundingClientRect(); t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px'); })); })();
-// from Apple (2026-11-14): the story lights up word by word as it passes up the screen
 (function () { const sec = document.querySelector('.story'), p = sec && sec.querySelector('p'); if (!p) return;
   const wrap = (node) => { Array.from(node.childNodes).forEach((n) => { if (n.nodeType === 3) { const f = document.createDocumentFragment(); n.textContent.split(/(\s+)/).forEach((t) => { if (!t) return; if (/^\s+$/.test(t)) f.appendChild(document.createTextNode(t)); else { const w = document.createElement('span'); w.className = 'w'; w.textContent = t; f.appendChild(w); } }); node.replaceChild(f, n); } else if (n.nodeType === 1) wrap(n); }); };
   wrap(p); sec.classList.add('lights'); const words = Array.from(p.querySelectorAll('.w')); let lit = -1;
@@ -685,7 +617,7 @@ document.querySelectorAll('[data-bill]').forEach((b) => b.addEventListener('clic
   document.querySelector('[data-per]').textContent = y ? T[0] : T[1];
   document.querySelector('[data-note]').textContent = y ? T[2] : T[3];
 }));
-function lkMobile(items, box) {   // the closer look on a phone: his "A" (swiped, one screen high), ENHANCED 2026-11-14 01:55 — the page in the middle stands whole, its neighbours peek smaller at the sides, the headline above changes with it, a tap on a neighbour brings it in
+function lkMobile(items, box) {
   let m = box.querySelector('.lk-m'); if (!m) { m = document.createElement('div'); m.className = 'lk-m'; box.appendChild(m); }
   m.innerHTML = '<div class="lk-head"><b></b></div><div class="lk-rail">' + items.map((x) => '<article class="lk-card"><div class="phone"><img loading="lazy" data-s="' + x[1] + '" alt="' + x[0] + '"></div></article>').join('') + '</div><div class="lk-dots">' + items.map(() => '<i></i>').join('') + '</div>';
   m.querySelectorAll('img').forEach((i) => { i.src = 'shots/' + i.dataset.s + '.jpg'; });
@@ -752,7 +684,6 @@ const LK = [
   document.getElementById('lk-prev').addEventListener('click', () => step(-1));
   phone.addEventListener('click', () => step(1));
   group(0);
-  // enhanced: on a computer the phone tilts a little under the pointer and its glass catches a light
   if (matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     box.addEventListener('pointermove', (e) => { const r = phone.getBoundingClientRect(), cl = (v, a) => Math.max(-a, Math.min(a, v));
       phone.style.setProperty('--ry', cl((e.clientX - (r.left + r.width / 2)) / r.width * 7, 12).toFixed(2)); phone.style.setProperty('--rx', cl(-(e.clientY - (r.top + r.height / 2)) / r.height * 6, 8).toFixed(2));
@@ -760,7 +691,7 @@ const LK = [
     box.addEventListener('pointerleave', () => { ['--ry', '--rx'].forEach((v) => phone.style.setProperty(v, 0)); phone.style.setProperty('--go', 0); }); }
 })();
 </script>
-<script>(function () {   // a chapter's drawing starts when a third of the chapter is on screen, once
+<script>(function () {
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.ch').forEach((c) => c.classList.add('go')); return; }
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('go'); io.unobserve(e.target); } }), { threshold: .3 });
   document.querySelectorAll('.ch').forEach((c) => io.observe(c));
